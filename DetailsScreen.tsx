@@ -1,12 +1,10 @@
 // DetailsScreen.tsx
 import React from 'react';
 import { View, Text , Button, StyleSheet} from 'react-native';
-import { StackNavigationProp } from '@react-navigation/stack';
 import commonStyles from './Styles';
+import { DetailsScreenProps } from './NavigationType';
 
-interface DetailsScreenProps {
-  navigation: StackNavigationProp<any, 'Details'>;
-  }
+
 
 const DetailsScreen: React.FC<DetailsScreenProps> = ({navigation}) => (
   <View style={commonStyles.container}>
