@@ -1,15 +1,16 @@
 // DetailsScreen.tsx
 import React from 'react';
 import { View, Text , Button, StyleSheet} from 'react-native';
+import commonStyles from './Styles';
 
 interface DetailsScreenProps {
     navigation: any; 
   }
 
 const DetailsScreen: React.FC<DetailsScreenProps> = ({navigation}) => (
-  <View style={styles.container}>
+  <View style={commonStyles.container}>
     <Text>Écran détails</Text>
-    <View style={styles.buttonContainer}>
+    <View style={commonStyles.buttonContainer}>
       <Button
         title="Retour à l'écran Précédent"
         onPress={() => navigation.navigate('Home')}
@@ -19,15 +20,5 @@ const DetailsScreen: React.FC<DetailsScreenProps> = ({navigation}) => (
   
 );
 
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    buttonContainer: {
-      marginTop: 20,
-    },
-  });
 
 export default DetailsScreen;

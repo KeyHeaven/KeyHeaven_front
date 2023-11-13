@@ -10,7 +10,9 @@ const Stack = createStackNavigator();
 
 const Navigation: React.FC = () => (
   <NavigationContainer>
-    <Stack.Navigator initialRouteName="Home">
+    <Stack.Navigator initialRouteName="Home"  
+    // screenOptions={{ headerShown: false }}  //pour retirer la navbar lorsqu'il y aura le front final
+    >
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Details" component={DetailsScreen} />
     </Stack.Navigator>
