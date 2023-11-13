@@ -1,10 +1,11 @@
 // HomeScreen.tsx
 import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
+import { StackNavigationProp } from '@react-navigation/stack';
 import commonStyles from './Styles';
 
 interface HomeScreenProps {
-  navigation: any; // TODO: type navigation props
+  navigation: StackNavigationProp<any, 'Home'>; 
 }
 
 const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => (
