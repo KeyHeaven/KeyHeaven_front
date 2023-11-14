@@ -1,8 +1,8 @@
 // DetailsScreen.tsx
 import React from 'react';
 import { View, Text , Button, StyleSheet} from 'react-native';
-import commonStyles from './Styles';
-import { DetailsScreenProps } from './NavigationType';
+import commonStyles from '../Styles';
+import { DetailsScreenProps } from '../Navigations/NavigationType';
 
 
 
