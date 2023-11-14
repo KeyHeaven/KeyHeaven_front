@@ -18,13 +18,12 @@ const commonStyles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-
   },
   buttonContainer: {
     marginTop: 20,
   },
   splashImage1: {
-    left: 30,
+    left: 20,
     zIndex: -1,
   },
   splashImage2: {

@@ -15,6 +15,7 @@ const Navigation: React.FC = () => (
     <Stack.Navigator initialRouteName="Start"  
     screenOptions={{ headerShown: false }}  //pour retirer la navbar lorsqu'il y aura le front final
     >
+      {/* Chaque écrans doit etre indiqué ici  */}
       <Stack.Screen name="Start"  component={StartScreen} />
       <Stack.Screen name="Splash"  component={SplashScreen} />
       <Stack.Screen name="Home" component={HomeScreen} />
