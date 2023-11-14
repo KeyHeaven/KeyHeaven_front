@@ -11,16 +11,12 @@ const StartScreen: React.FC<StartScreenProps> = ({ navigation }) => {
     }, 2000);
   }, []);
   return (
-    <View  style={commonStyles.containerSplash}>
-      <View
-        style={commonStyles.splashImage1}
-      >
-          <Blob/>
+    <View style={commonStyles.containerSplash}>
+      <View style={commonStyles.splashImage1}>
+        <Blob />
       </View>
-      <View
-        style={commonStyles.splashImage2}
-      >
-          <Game/>
+      <View style={commonStyles.splashImage2}>
+        <Game />
       </View>
     </View>
   );

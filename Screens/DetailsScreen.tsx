@@ -1,4 +1,3 @@
-// DetailsScreen.tsx
 import React from 'react';
 import { View, Text , Button, StyleSheet} from 'react-native';
 import commonStyles from '../Styles';
@@ -14,8 +13,6 @@ const DetailsScreen: React.FC<DetailsScreenProps> = ({navigation}) => (
       />
     </View>
   </View>
-  
 );
-
 
 export default DetailsScreen;

@@ -1,4 +1,3 @@
-// HomeScreen.tsx
 import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 import commonStyles from '../Styles';
@@ -15,6 +14,5 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => (
     </View>
   </View>
 );
-
 
 export default HomeScreen;
