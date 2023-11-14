@@ -4,9 +4,6 @@ import commonStyles from '../../Styles';
 import { SplashScreenProps } from '../../Navigations/NavigationType';
 import * as Animatable from 'react-native-animatable';
 
-
-
-
 const SplashScreen: React.FC<SplashScreenProps> = ({ navigation }) => {
   useEffect(() => {
     setTimeout(() => {

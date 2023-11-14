@@ -4,8 +4,6 @@ import { View, Text , Button, StyleSheet} from 'react-native';
 import commonStyles from '../Styles';
 import { DetailsScreenProps } from '../Navigations/NavigationType';
 
-
-
 const DetailsScreen: React.FC<DetailsScreenProps> = ({navigation}) => (
   <View style={commonStyles.container}>
     <Text>Écran détails</Text>

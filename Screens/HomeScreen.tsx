@@ -4,8 +4,6 @@ import { View, Text, Button, StyleSheet } from 'react-native';
 import commonStyles from '../Styles';
 import { HomeScreenProps } from '../Navigations/NavigationType';
 
-
-
 const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => (
   <View style={commonStyles.containerHome}>
     <Text>Accueil</Text>

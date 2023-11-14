@@ -3,10 +3,6 @@ import { View, Image } from 'react-native';
 import commonStyles from '../../Styles';
 import { StartScreenProps } from '../../Navigations/NavigationType';
 
-
-
-
-
 const StartScreen: React.FC<StartScreenProps> = ({ navigation }) => {
   useEffect(() => {
     setTimeout(() => {
