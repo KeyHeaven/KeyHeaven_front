@@ -9,3 +9,5 @@
 <h1>Installation de la dépendance react-navigation : <p>npm install @react-navigation/native @react-navigation/stack</p></h1>
 
 <h1>Installation de la dépendance pour l'animation :  <p>npm install react-native-animatable --save</p></h1>
+
+<h1>Installation de la dépendance pour l'utilisation des svg :  <p>npx expo install react-native-svg</p></h1>
