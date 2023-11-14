@@ -14,22 +14,21 @@ const commonStyles = StyleSheet.create({
     alignItems: 'center',
   },
   containerSplash: {
+    display: 'flex',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+
   },
   buttonContainer: {
     marginTop: 20,
   },
   splashImage1: {
-    position: 'absolute',
-    top: 20,
     left: 30,
     zIndex: -1,
   },
   splashImage2: {
-    position: 'absolute',
-    top: 80,
+    top: -250,
     left: 15,
     zIndex: 1,
   }
