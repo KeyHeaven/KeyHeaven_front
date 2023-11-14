@@ -30,7 +30,7 @@ const commonStyles = StyleSheet.create({
   splashImage2: {
     position: 'absolute',
     top: 80,
-    left: 25,
+    left: 15,
     zIndex: 1,
   }
 });
