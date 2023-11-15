@@ -1,22 +1,22 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 const commonStyles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   containerHome: {
-    backgroundColor: '#272727',
+    backgroundColor: "#272727",
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   containerSplash: {
-    display: 'flex',
+    display: "flex",
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   buttonContainer: {
     marginTop: 20,
@@ -29,7 +29,7 @@ const commonStyles = StyleSheet.create({
     top: -250,
     left: 15,
     zIndex: 1,
-  }
+  },
 });
 
 export default commonStyles;

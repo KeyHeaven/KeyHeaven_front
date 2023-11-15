@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
-import commonStyles from '../Styles';
+import commonStyles from '../Styles/Styles';
 import { HomeScreenProps } from '../Navigations/NavigationType';
 
 const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => (

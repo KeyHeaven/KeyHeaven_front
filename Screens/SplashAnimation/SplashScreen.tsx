@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Image } from 'react-native';
-import commonStyles from '../../Styles';
+import commonStyles from '../../Styles/Styles';
 import { SplashScreenProps } from '../../Navigations/NavigationType';
 import * as Animatable from 'react-native-animatable';
 import { zoomOut, colorBackground } from '../SplashAnimation/animation';
@@ -8,7 +8,7 @@ import { zoomOut, colorBackground } from '../SplashAnimation/animation';
 const SplashScreen: React.FC<SplashScreenProps> = ({ navigation }) => {
   useEffect(() => {
     setTimeout(() => {
-      navigation.navigate('Home');
+      navigation.navigate('Auth');
     }, 1000);
   }, []);
 
