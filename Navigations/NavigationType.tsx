@@ -9,3 +9,11 @@ export interface DetailsScreenProps {
   navigation: StackNavigationProp<any, 'Details'>;
 }
 
+export interface SplashScreenProps {
+  navigation: StackNavigationProp<any, 'Splash'>;
+}
+
+export interface StartScreenProps {
+  navigation: StackNavigationProp<any, 'Start'>;
+}
+

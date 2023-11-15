@@ -1,6 +1,6 @@
 // App.tsx
 import React from 'react';
-import Navigation from './Navigation';
+import Navigation from './Navigations/Navigation';
 
 const App: React.FC = () => <Navigation />;
 
