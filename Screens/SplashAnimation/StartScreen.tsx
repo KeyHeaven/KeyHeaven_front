@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
-import { View } from 'react-native';
+import { View,Image } from 'react-native';
 import commonStyles from '../../Styles';
 import { StartScreenProps } from '../../Navigations/NavigationType';
-import { Blob, Game } from '../../assets/svg/SvgFile';
 
 const StartScreen: React.FC<StartScreenProps> = ({ navigation }) => {
   useEffect(() => {
@@ -13,10 +12,10 @@ const StartScreen: React.FC<StartScreenProps> = ({ navigation }) => {
   return (
     <View style={commonStyles.containerSplash}>
       <View style={commonStyles.splashImage1}>
-        <Blob />
+      <Image source={require('../../assets/blob.png')} />
       </View>
       <View style={commonStyles.splashImage2}>
-        <Game />
+      <Image source={require('../../assets/game.png')} />
       </View>
     </View>
   );
