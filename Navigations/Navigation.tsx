@@ -1,4 +1,3 @@
-// Navigation.tsx
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -13,7 +12,7 @@ const Stack = createStackNavigator();
 const Navigation: React.FC = () => (
   <NavigationContainer>
     <Stack.Navigator initialRouteName="Start"  
-    screenOptions={{ headerShown: false }}  //pour retirer la navbar lorsqu'il y aura le front final
+    screenOptions={{ headerShown: false }}  
     >
       {/* Chaque écrans doit etre indiqué ici  */}
       <Stack.Screen name="Start"  component={StartScreen} />
