@@ -8,22 +8,21 @@ import CustomButton from "../../Components/CustomBtnComponent";
 const AuthScreen: React.FC<AuthScreenProps> = ({ navigation }) => (
   <View style={commonStyles.containerHome}>
     <View>
-      <View style={{ flex: 1, justifyContent: "flex-start", marginTop: 50 }}>
+      <View>
         <Image
           source={require("../../assets/images/keylogo.png")}
-          style={{ height: 140, width: 135.2, margin: 50 }}
+          style={{ height: 140, width: 135.2, margin: 60, bottom: 50 }}
         />
       </View>
-
       <Text style={TextStyle.title}>Bienvenue sur Keyheaven</Text>
     </View>
-    <View style={{ flex: 1, justifyContent: "flex-end", marginBottom: 20 }}>
+    <View style={{ top: 120 }}>
       <CustomButton
         onPress={() => navigation.navigate("Login")}
         buttonText="Se connecter"
       />
       <CustomButton
-        onPress={() => navigation.navigate("Home")}
+        onPress={() => navigation.navigate("SignUp")}
         buttonText="S'inscrire"
       />
     </View>

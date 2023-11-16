@@ -1,13 +1,13 @@
 import React from "react";
 import { View, Text, Button, Image, Pressable, TextInput } from "react-native";
 import commonStyles from "../../Styles/Styles";
-import { LoginScreenProps } from "../../Navigations/NavigationType";
+import { SignUpScreenProps } from "../../Navigations/NavigationType";
 import TextStyle from "../../Styles/TextStyle";
 import CustomButton from "../../Components/CustomBtnComponent";
 import { faLock, faUser } from "@fortawesome/free-solid-svg-icons";
 import CustomInputAuth from "../../Components/CustomInputAuth";
 
-const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => (
+const SignUpScreen: React.FC<SignUpScreenProps> = ({ navigation }) => (
   <View style={commonStyles.containerHome}>
     <View>
       <View style={{ marginTop: 50 }}>
@@ -21,16 +21,18 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => (
       <Text style={TextStyle.title}>Keyheaven</Text>
     </View>
     <View style={{ marginTop: 100 }}>
+      <CustomInputAuth icon={faUser} placeholder="Pseudo" />
       <CustomInputAuth icon={faUser} placeholder="Adresse E-mail" />
       <CustomInputAuth icon={faLock} placeholder="Mot de passe" />
+      <CustomInputAuth icon={faLock} placeholder="Confirmation Mot de passe" />
     </View>
-    <View style={{ marginBottom: 20, top: 70 }}>
+    <View style={{ marginBottom: 20, top: 10 }}>
       <CustomButton
         onPress={() => navigation.navigate("Home")}
-        buttonText="Se connecter"
+        buttonText="S'inscrire"
       />
     </View>
   </View>
 );
 
-export default LoginScreen;
+export default SignUpScreen;
