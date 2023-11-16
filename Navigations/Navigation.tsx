@@ -7,6 +7,7 @@ import DetailsScreen from "../Screens/DetailsScreen";
 import SplashScreen from "../Screens/SplashAnimation/SplashScreen";
 import StartScreen from "../Screens/SplashAnimation/StartScreen";
 import AuthScreen from "../Screens/Authentification/AuthScreen";
+import LoginScreen from "../Screens/Authentification/LoginScreen";
 
 const Stack = createStackNavigator();
 
@@ -19,6 +20,7 @@ const Navigation: React.FC = () => (
       <Stack.Screen name="Start" component={StartScreen} />
       <Stack.Screen name="Splash" component={SplashScreen} />
       <Stack.Screen name="Auth" component={AuthScreen} />
+      <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Details" component={DetailsScreen} />
     </Stack.Navigator>
