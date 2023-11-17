@@ -22,15 +22,14 @@ const commonStyles = StyleSheet.create({
     marginTop: 20,
   },
   splashImage1: {
-    left: 20,
     zIndex: -1,
   },
   splashImage2: {
     top: -250,
-    left: 15,
     zIndex: 1,
   },
   inputAuth: {
+    flex: 1,
     alignItems: "center",
     justifyContent: "center",
     paddingTop: 10,
@@ -39,6 +38,7 @@ const commonStyles = StyleSheet.create({
     paddingLeft: 30,
     backgroundColor: "#D9D9D9",
     color: "#838383",
+    borderRadius: 8,
   },
   inputSection: {
     flexDirection: "row",

@@ -15,7 +15,7 @@ const StartScreen: React.FC<StartScreenProps> = ({ navigation }) => {
       <View style={commonStyles.splashImage1}>
         <Image
           source={require("../../assets/images/blob.png")}
-          style={{ height: 300, width: 300 }} // Ajustez la taille selon vos besoins
+          style={{ height: 300, width: 300 }}
         />
       </View>
       <View style={commonStyles.splashImage2}>

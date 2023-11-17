@@ -11,7 +11,10 @@ interface CustomInputAuthProps {
 
 const CustomInputAuth: FC<CustomInputAuthProps> = ({ icon, placeholder }) => (
   <View style={commonStyles.inputSection}>
-    <FontAwesomeIcon style={{ height: 25, width: 25 }} icon={icon} />
+    <FontAwesomeIcon
+      style={{ height: 25, width: 25, marginLeft: 20 }}
+      icon={icon}
+    />
     <TextInput
       style={commonStyles.inputAuth}
       placeholder={placeholder}
