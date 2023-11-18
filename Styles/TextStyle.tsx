@@ -18,13 +18,6 @@ const TextStyle = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  btnText: {
-    // Je n'arrive pas a utiliser la font Montserrat
-    // fontFamily: "Montserrat-Regular",
-    fontSize: 12,
-    fontWeight: "500",
-    color: "#fff",
-  },
 });
 
 export default TextStyle;

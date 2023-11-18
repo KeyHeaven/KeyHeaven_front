@@ -1,7 +1,6 @@
 import React from "react";
 import { View, Text, Pressable } from "react-native";
-import TextStyle from "../Styles/TextStyle";
-import commonStyles from "../Styles/Styles";
+import ButtonStyles from "./ButtonStyles";
 
 interface CustomButtonProps {
   onPress: () => void;
@@ -9,7 +8,7 @@ interface CustomButtonProps {
 }
 
 const CustomButton: React.FC<CustomButtonProps> = ({ onPress, buttonText }) => (
-  <View style={commonStyles.buttonContainer}>
+  <View style={ButtonStyles.buttonContainer}>
     <Pressable
       style={{
         backgroundColor: "#2556A1",
@@ -21,7 +20,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({ onPress, buttonText }) => (
         justifyContent: "center",
       }}
       onPress={onPress}>
-      <Text style={TextStyle.btnText}>{buttonText}</Text>
+      <Text style={ButtonStyles.btnText}>{buttonText}</Text>
     </Pressable>
   </View>
 );

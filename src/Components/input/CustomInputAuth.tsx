@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { View, TextInput, StyleSheet, TextStyle } from "react-native";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { IconDefinition } from "@fortawesome/fontawesome-common-types";
-import commonStyles from "../Styles/Styles";
+import InputStyles from "./InputStyles";
 
 interface CustomInputAuthProps {
   icon: IconDefinition;
@@ -10,13 +10,13 @@ interface CustomInputAuthProps {
 }
 
 const CustomInputAuth: FC<CustomInputAuthProps> = ({ icon, placeholder }) => (
-  <View style={commonStyles.inputSection}>
+  <View style={InputStyles.inputSection}>
     <FontAwesomeIcon
-      style={{ height: 25, width: 25, marginLeft: 20 , color: "#838383" }}
+      style={{ height: 25, width: 25, marginLeft: 20, color: "#838383" }}
       icon={icon}
     />
     <TextInput
-      style={commonStyles.inputAuth}
+      style={InputStyles.inputAuth}
       placeholder={placeholder}
       underlineColorAndroid="transparent"
     />

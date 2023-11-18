@@ -1,9 +1,9 @@
 import React from "react";
-import { View, Text, Button, Image, Pressable } from "react-native";
+import { View, Text, Image } from "react-native";
 import commonStyles from "../../Styles/Styles";
 import { AuthScreenProps } from "../../Navigations/NavigationType";
 import TextStyle from "../../Styles/TextStyle";
-import CustomButton from "../../Components/CustomBtnComponent";
+import CustomButton from "../../src/Components/button/CustomBtnComponent";
 
 const AuthScreen: React.FC<AuthScreenProps> = ({ navigation }) => (
   <View style={commonStyles.containerHome}>

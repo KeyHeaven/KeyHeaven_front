@@ -3,9 +3,9 @@ import { View, Text, Button, Image, Pressable, TextInput } from "react-native";
 import commonStyles from "../../Styles/Styles";
 import { SignUpScreenProps } from "../../Navigations/NavigationType";
 import TextStyle from "../../Styles/TextStyle";
-import CustomButton from "../../Components/CustomBtnComponent";
+import CustomButton from "../../src/Components/button/CustomBtnComponent";
 import { faLock, faUser } from "@fortawesome/free-solid-svg-icons";
-import CustomInputAuth from "../../Components/CustomInputAuth";
+import CustomInputAuth from "../../src/Components/input/CustomInputAuth";
 
 const SignUpScreen: React.FC<SignUpScreenProps> = ({ navigation }) => (
   <View style={commonStyles.containerHome}>
