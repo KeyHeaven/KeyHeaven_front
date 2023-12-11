@@ -12,6 +12,18 @@ const commonStyles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  ContainerTopBar: {
+    display: "flex",
+    flexDirection: "row",
+    top: 0,
+    left: 0,
+    backgroundColor: "#272727",
+    height: 50,
+    width: "100%",
+    position: "absolute",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
   containerSplash: {
     display: "flex",
     flex: 1,
@@ -24,6 +36,21 @@ const commonStyles = StyleSheet.create({
   splashImage2: {
     top: -250,
     zIndex: 1,
+  },
+  searchInput: {
+    color: "#fff",
+    justifyContent: "center",
+    alignContent: "center",
+    alignItems: "center",
+    padding: 10,
+    borderColor: "#fff",
+  },
+  SearchContainer: {
+    flexDirection: "row",
+    backgroundColor: "#272727",
+    alignItems: "center",
+    borderBottomWidth: 1,
+    borderBottomColor: "#fff",
   },
 });
 
