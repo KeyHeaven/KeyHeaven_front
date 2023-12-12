@@ -1,8 +1,8 @@
 import React from "react";
 import { View, Image, Text, TouchableOpacity, StyleSheet } from "react-native";
 
-interface BestSellsGalleryProps {
-  data: { title: string; image: any;}[];
+interface SalesGalleryProps {
+  data: { title: string; image: any; sales: string }[];
   onPress: (title: string) => void;
 }
 
@@ -10,7 +10,7 @@ const handleCardPress = (title: string) => {
   console.log(`Card pressed: ${title}`);
 };
 
-const BestSellsGallery: React.FC<BestSellsGalleryProps> = ({ data }) => {
+const SalesGallery: React.FC<SalesGalleryProps> = ({ data }) => {
   return (
     <View style={styles.container}>
       {data.map((item, index) => (
@@ -20,6 +20,7 @@ const BestSellsGallery: React.FC<BestSellsGalleryProps> = ({ data }) => {
           onPress={() => handleCardPress(item.title)}>
           <Image source={item.image} style={styles.image} resizeMode="cover" />
           <Text style={styles.text}>{item.title}</Text>
+          <Text style={styles.textSales}>{item.sales}</Text>
         </TouchableOpacity>
       ))}
     </View>
@@ -62,4 +63,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default BestSellsGallery;
+export default SalesGallery;

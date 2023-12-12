@@ -9,6 +9,7 @@ import BannerSwiper from "../src/Components/BannerGallery/BannerSwiper";
 import CustomButton from "../src/Components/button/CustomBtnComponent";
 import TabButton from "../src/Components/button/TabBtn";
 import TabContent from "../src/Components/TabContent/TabContent";
+import OfferSwiper from "../src/Components/OfferGallery/OfferGallery";
 
 const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   const [activeTab, setActiveTab] = useState("Tab1");
@@ -35,6 +36,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
         />
       </View>
       <TabContent activeTab={activeTab} />
+      <OfferSwiper/>
       <View style={ButtonStyles.buttonContainer}>
         <CustomButton
           buttonText="Aller à l'écran suivant"

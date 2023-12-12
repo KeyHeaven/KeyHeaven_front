@@ -5,6 +5,7 @@ import NewTabGallery from "../TabGallery/NewTabGallery";
 import BestSellsGallery from "../TabGallery/BestSellsGallery";
 import slides from "../../../Data/Slides";
 import SalesSlides from "../../../Data/SalesSlides";
+import SalesGallery from "../TabGallery/SalesGallery";
 
 interface TabContentProps {
   activeTab: string;
@@ -22,16 +23,19 @@ const TabContent: React.FC<TabContentProps> = ({ activeTab }) => {
       return (
         <ScrollView style={commonStyles.tabContent}>
           <BestSellsGallery
-            data={SalesSlides}
+            data={slides}
             onPress={() => console.log("pressed")}
           />
         </ScrollView>
       );
     case "Tab3":
       return (
-        <View style={commonStyles.tabContent}>
-          <Text>Tab 3 hihihihihi</Text>
-        </View>
+        <ScrollView style={commonStyles.tabContent}>
+        <SalesGallery
+          data={SalesSlides}
+          onPress={() => console.log("pressed")}
+        />
+      </ScrollView>
       );
     default:
       return null;
