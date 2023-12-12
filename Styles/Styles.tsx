@@ -60,14 +60,26 @@ const commonStyles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor : "#ff0000"
+    backgroundColor: "#ff0000",
   },
   slide: {
     flex: 3,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
-    width:200
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#fff",
+    width: 200,
+  },
+  tabContent: {
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#fff",
+    color: "#ff0000",
+  },
+  row: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-around",
+    marginVertical: 10,
   },
 });
 
