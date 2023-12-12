@@ -1,49 +1,61 @@
+import React from "react";
+import { TouchableOpacity, View } from "react-native";
 import {
   faUser,
   faSearch,
   faCartShopping,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { View } from "react-native";
 import SearchInput from "react-native-search-filter";
 import commonStyles from "../../../Styles/Styles";
 
-const TopBar: React.FC = () => (
-  <View style={commonStyles.ContainerTopBar}>
-    <FontAwesomeIcon
-      style={{
-        height: 25,
-        width: 25,
-        margin: 5,
-        marginLeft: 10,
-        color: "#fff",
-      }}
-      icon={faUser}
-    />
-    <View style={commonStyles.SearchContainer}>
-      <FontAwesomeIcon
-        style={{ height: 20, width: 20, margin: 5, color: "#fff" }}
-        icon={faSearch}
-      />
-      <SearchInput
-        style={commonStyles.searchInput}
-        placeholder="Rechercher"
-        clearIcon
-        inputFocus={false}
-      />
+
+const TopBar: React.FC = () => {
+  const handleUserIconPress = () => {
+    console.log("User icon pressed");
+  };
+
+  const handleCartIconPress = () => {
+    console.log("Cart icon pressed");
+  };
+
+  return (
+    <View style={commonStyles.ContainerTopBar}>
+      <TouchableOpacity onPress={handleUserIconPress}>
+        <FontAwesomeIcon
+          style={{
+            height: 40,
+            width: 40,
+            marginLeft: 10,
+            color: "#fff",
+          }}
+          icon={faUser}
+        />
+      </TouchableOpacity>
+      <View style={commonStyles.SearchContainer}>
+        <FontAwesomeIcon
+          style={{ height: 20, width: 20, margin: 5, color: "#fff" }}
+          icon={faSearch}
+        />
+        <SearchInput
+          style={commonStyles.searchInput}
+          placeholder="Rechercher"
+          inputFocus={false}
+        />
+      </View>
+      <TouchableOpacity onPress={handleCartIconPress}>
+        <FontAwesomeIcon
+          style={{
+            height: 40,
+            width: 40,
+            marginRight: 10,
+            color: "#fff",
+          }}
+          icon={faCartShopping}
+        />
+      </TouchableOpacity>
     </View>
-    <FontAwesomeIcon
-      style={{
-        height: 25,
-        width: 25,
-        margin: 5,
-        marginRight: 10,
-        color: "#fff",
-      }}
-      icon={faCartShopping}
-    />
-    {/* <MyDrawer />  je testerais chez moi  */}
-  </View>
-);
+  );
+};
 
 export default TopBar;

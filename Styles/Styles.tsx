@@ -12,15 +12,19 @@ const commonStyles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  containerHomePage: {
+    backgroundColor: "#272727",
+    flex: 1,
+  },
   ContainerTopBar: {
+    position: "relative",
     display: "flex",
     flexDirection: "row",
-    top: 0,
+    top: 20,
     left: 0,
     backgroundColor: "#272727",
     height: 50,
     width: "100%",
-    position: "absolute",
     justifyContent: "space-between",
     alignItems: "center",
   },
@@ -51,6 +55,19 @@ const commonStyles = StyleSheet.create({
     alignItems: "center",
     borderBottomWidth: 1,
     borderBottomColor: "#fff",
+  },
+  wrapper: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor : "#ff0000"
+  },
+  slide: {
+    flex: 3,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    width:200
   },
 });
 
