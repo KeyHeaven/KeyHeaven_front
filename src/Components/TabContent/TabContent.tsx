@@ -1,7 +1,10 @@
-// TabContent.tsx
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import commonStyles from "../../../Styles/Styles";
+import NewTabGallery from "../TabGallery/NewTabGallery";
+import BestSellsGallery from "../TabGallery/BestSellsGallery";
+import slides from "../../../Data/Slides";
+import SalesSlides from "../../../Data/SalesSlides";
 
 interface TabContentProps {
   activeTab: string;
@@ -11,15 +14,18 @@ const TabContent: React.FC<TabContentProps> = ({ activeTab }) => {
   switch (activeTab) {
     case "Tab1":
       return (
-        <View style={commonStyles.tabContent}>
-          <Text>Tab 1 hehehehe</Text>
-        </View>
+        <ScrollView style={commonStyles.tabContent}>
+          <NewTabGallery data={slides} onPress={() => console.log("pressed")} />
+        </ScrollView>
       );
     case "Tab2":
       return (
-        <View style={commonStyles.tabContent}>
-          <Text>Tab 2 hohohohohoho</Text>
-        </View>
+        <ScrollView style={commonStyles.tabContent}>
+          <BestSellsGallery
+            data={SalesSlides}
+            onPress={() => console.log("pressed")}
+          />
+        </ScrollView>
       );
     case "Tab3":
       return (

@@ -1,32 +1,17 @@
-// BannerSwiper.tsx
 import React from "react";
 import { View, Image, StyleSheet, Text, TouchableOpacity } from "react-native";
 import Swiper from "react-native-swiper";
+import SmallSlides from "../../../Data/SmallSlides";
 
-const slides = [
-  {
-    title: "Cyberpunk 2077",
-    image: require("../../../assets/images/cyber.png"),
-  },
-  {
-    title: "Baldur's gate III",
-    image: require("../../../assets/images/baldur.jpg"),
-  },
-  {
-    title: "Tales of Symphonia",
-    image: require("../../../assets/images/tales.jpg"),
-  },
-];
 
 const BannerSwiper: React.FC = () => (
   <View style={BannerStyles.container}>
     <Swiper showsPagination={false}>
-      {slides.map((slide, index) => (
+      {SmallSlides.map((slide, index) => (
         <TouchableOpacity
           key={index}
           style={BannerStyles.slide}
-          onPress={() => handleSlidePress(slide.title)}
-        >
+          onPress={() => handleSlidePress(slide.title)}>
           <Image
             source={slide.image}
             style={BannerStyles.image}
@@ -47,7 +32,7 @@ const handleSlidePress = (title: string) => {
 const BannerStyles = StyleSheet.create({
   container: {
     marginTop: 50,
-    height: 200,
+    height: 150,
     justifyContent: "center",
     alignItems: "center",
   },

@@ -70,9 +70,8 @@ const commonStyles = StyleSheet.create({
     width: 200,
   },
   tabContent: {
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#fff",
+    height: 300,
+    backgroundColor: "#272727",
     color: "#ff0000",
   },
   row: {
