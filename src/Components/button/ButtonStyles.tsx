@@ -11,6 +11,13 @@ const ButtonStyles = StyleSheet.create({
     fontWeight: "500",
     color: "#fff",
   },
+  TabBtn: {
+    borderRadius: 8,
+    width: 130,
+    height: 40,
+    alignItems: "center",
+    justifyContent: "center",
+  },
 });
 
 export default ButtonStyles;
