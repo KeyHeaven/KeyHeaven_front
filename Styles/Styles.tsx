@@ -75,6 +75,7 @@ const commonStyles = StyleSheet.create({
   },
   quantityText: {
     marginHorizontal: 10,
+    color: "#fff",
   },
   cartContainer: {
     flex: 1,
@@ -90,6 +91,7 @@ const commonStyles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 10,
+    color: "#fff",
   },
   // end cart
   searchInput: {
