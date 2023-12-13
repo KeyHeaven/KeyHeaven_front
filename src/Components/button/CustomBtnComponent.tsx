@@ -5,9 +5,10 @@ import ButtonStyles from "./ButtonStyles";
 interface CustomButtonProps {
   onPress: () => void;
   buttonText: string;
+  styles?: object;
 }
 
-const CustomButton: React.FC<CustomButtonProps> = ({ onPress, buttonText }) => (
+const CustomButton: React.FC<CustomButtonProps> = ({ onPress, buttonText, styles  }) => (
   <View style={ButtonStyles.buttonContainer}>
     <Pressable
       style={{
@@ -18,6 +19,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({ onPress, buttonText }) => (
         height: 40,
         alignItems: "center",
         justifyContent: "center",
+          ...styles,
       }}
       onPress={onPress}>
       <Text style={ButtonStyles.btnText}>{buttonText}</Text>

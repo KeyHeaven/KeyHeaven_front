@@ -41,6 +41,59 @@ const commonStyles = StyleSheet.create({
     top: -250,
     zIndex: 1,
   },
+  // start cart
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center"
+  },
+  modalButtons: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    width: '100%'
+  },
+  cartItem: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 10,
+    borderRadius: 10,
+    borderBottomColor: '#ddd',
+  },
+  cartImage: {
+    width: 100,
+    height: 100,
+    marginRight: 15,
+  },
+  quantityControls: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  quantityText: {
+    marginHorizontal: 10,
+    color: "#fff",
+  },
+  cartContainer: {
+    flex: 1,
+    padding: 25,
+    paddingTop: 50,
+  },
+  cartHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 25,
+  },
+  cartTotal: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 10,
+    color: "#fff",
+  },
+  // end cart
   searchInput: {
     color: "#fff",
     justifyContent: "center",

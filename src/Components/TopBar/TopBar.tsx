@@ -8,15 +8,19 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import SearchInput from "react-native-search-filter";
 import commonStyles from "../../../Styles/Styles";
-
+import { useNavigation } from '@react-navigation/native';
 
 const TopBar: React.FC = () => {
+
+    const navigation = useNavigation();
+
   const handleUserIconPress = () => {
     console.log("User icon pressed");
   };
 
   const handleCartIconPress = () => {
-    console.log("Cart icon pressed");
+      // @ts-ignore
+      navigation.navigate("Cart")
   };
 
   return (
