@@ -25,3 +25,7 @@ export interface LoginScreenProps {
 export interface SignUpScreenProps {
   navigation: StackNavigationProp<any, "SignUp">;
 }
+
+export interface GameScreenProps {
+  navigation: StackNavigationProp<any, "Game">;
+}
