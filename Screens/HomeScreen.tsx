@@ -10,7 +10,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => (
     <View style={ButtonStyles.buttonContainer}>
       <Button
         title="Aller à l'écran suivant"
-        onPress={() => navigation.navigate("Details")}
+        onPress={() => navigation.navigate("Game")}
       />
     </View>
   </View>
