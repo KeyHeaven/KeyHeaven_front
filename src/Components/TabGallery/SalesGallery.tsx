@@ -1,17 +1,23 @@
 import React from "react";
 import { View, Image, Text, TouchableOpacity } from "react-native";
 import SalesGallerySstyles from "./SalesGalleryStyles";
+import { useNavigation } from "@react-navigation/native";
 
 interface SalesGalleryProps {
   data: { title: string; image: any; sales: string }[];
   onPress: (title: string) => void;
 }
 
-const handleCardPress = (title: string) => {
-  console.log(`Card pressed: ${title}`);
-};
 
 const SalesGallery: React.FC<SalesGalleryProps> = ({ data }) => {
+
+  const navigation = useNavigation();
+
+  const handleCardPress = (title: string) => {
+    // @ts-ignore
+    navigation.navigate("Game")
+  };
+
   return (
     <View style={SalesGallerySstyles.container}>
       {data.map((item, index) => (

@@ -6,8 +6,11 @@ import gameStyles from "../../Styles/GameStyles";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import Counter from "../../src/Components/button/Counter";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import TopBar from "../../src/Components/TopBar/TopBar";
 
 const GameScreen: React.FC<GameScreenProps> = ({}) => (
+    <View style={commonStyles.containerHomePage}>
+        <TopBar />
   <View style={commonStyles.containerHome}>
     <View style={gameStyles.imageContainer}>
       <Image
@@ -80,6 +83,7 @@ const GameScreen: React.FC<GameScreenProps> = ({}) => (
       <Text style={gameStyles.text}>Affichage: 1024x768.</Text>
     </View>
   </View>
+    </View>
 );
 
 export default GameScreen;
