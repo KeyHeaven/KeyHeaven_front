@@ -13,11 +13,18 @@ interface TabContentProps {
 }
 
 const TabContent: React.FC<TabContentProps> = ({ activeTab }) => {
+  const handleCardPress = (item: {
+    title: string;
+    image: any;
+    prix: string;
+  }) => {
+    console.log("Card pressed:", item);
+  };
   switch (activeTab) {
     case "Tab1":
       return (
         <ScrollView style={commonStyles.tabContent}>
-          <NewTabGallery data={slides} onPress={() => console.log("pressed")} />
+          <NewTabGallery data={slides} onPress={handleCardPress} />
         </ScrollView>
       );
     case "Tab2":

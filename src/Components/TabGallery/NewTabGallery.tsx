@@ -4,25 +4,29 @@ import NewTabGalleryStyles from "./NewTabGalleryStyles";
 import { useNavigation } from "@react-navigation/native";
 
 interface NewTabGalleryProps {
-  data: { title: string; image: any }[];
-  onPress: (title: string) => void;
+  data: { title: string; image: any; prix: string }[];
+  onPress: (item: { title: string; image: any; prix: string }) => void;
 }
 
-
-
-const NewTabGallery: React.FC<NewTabGalleryProps> = ({ data }) => {
+const NewTabGallery: React.FC<NewTabGalleryProps> = ({ data, onPress }) => {
   const navigation = useNavigation();
-  const handleCardPress = (title: string) => {
-    // @ts-ignore
-    navigation.navigate("Game")
+
+  const handleCardPress = (item: {
+    title: string;
+    image: any;
+    prix: string;
+  }) => {
+    onPress(item);
+    navigation.navigate("Game", { item });
   };
+
   return (
     <View style={NewTabGalleryStyles.container}>
       {data.map((item, index) => (
         <TouchableOpacity
           key={index}
           style={NewTabGalleryStyles.card}
-          onPress={() => handleCardPress(item.title)}>
+          onPress={() => handleCardPress(item)}>
           <Image
             source={item.image}
             style={NewTabGalleryStyles.image}
