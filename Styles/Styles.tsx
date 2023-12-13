@@ -12,6 +12,14 @@ const commonStyles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  containerHomeGame: {
+    marginTop: 20,
+    paddingBottom: 20,
+    backgroundColor: "#272727",
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
   containerHomePage: {
     backgroundColor: "#272727",
     flex: 1,
@@ -50,19 +58,19 @@ const commonStyles = StyleSheet.create({
   },
   modalText: {
     marginBottom: 15,
-    textAlign: "center"
+    textAlign: "center",
   },
   modalButtons: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    width: '100%'
+    flexDirection: "row",
+    justifyContent: "space-around",
+    width: "100%",
   },
   cartItem: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
     padding: 10,
     borderRadius: 10,
-    borderBottomColor: '#ddd',
+    borderBottomColor: "#ddd",
   },
   cartImage: {
     width: 100,
@@ -70,8 +78,8 @@ const commonStyles = StyleSheet.create({
     marginRight: 15,
   },
   quantityControls: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
   quantityText: {
     marginHorizontal: 10,
@@ -80,16 +88,16 @@ const commonStyles = StyleSheet.create({
   cartContainer: {
     flex: 1,
     padding: 25,
-    paddingTop: 50,
+    paddingTop: 10,
   },
   cartHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
     marginTop: 25,
   },
   cartTotal: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 10,
     color: "#fff",
   },

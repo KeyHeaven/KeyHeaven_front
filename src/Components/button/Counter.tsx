@@ -14,12 +14,12 @@ const Counter = () => {
     };
 
     return (
-        <View style={styles.container}>
-        <TouchableOpacity style={gameStyles.cardButton} onPress={decrement}>
+        <View style={gameStyles.mathContainer}>
+        <TouchableOpacity style={gameStyles.MathSign} onPress={decrement}>
             <Text style={gameStyles.textTitle}>-</Text>
         </TouchableOpacity>
         <Text style={[gameStyles.textTitle, styles.countText]}>{count}</Text>
-        <TouchableOpacity style={gameStyles.cardButton} onPress={increment}>
+        <TouchableOpacity style={gameStyles.MathSign} onPress={increment}>
             <Text style={gameStyles.textTitle}>+</Text>
         </TouchableOpacity>
         </View>
@@ -27,11 +27,6 @@ const Counter = () => {
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
     countText: {
         fontSize: 18,
         marginHorizontal: 10,

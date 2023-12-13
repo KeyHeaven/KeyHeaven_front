@@ -37,12 +37,6 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
       </View>
       <TabContent activeTab={activeTab} />
       <OfferSwiper />
-      <View style={ButtonStyles.buttonContainer}>
-        <CustomButton
-          buttonText="Aller à l'écran suivant"
-          onPress={() => navigation.navigate("Details")}
-        />
-      </View>
     </ScrollView>
   );
 };
