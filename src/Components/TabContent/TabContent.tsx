@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, ScrollView } from "react-native";
+import { ScrollView } from "react-native";
 import commonStyles from "../../../Styles/Styles";
 import NewTabGallery from "../TabGallery/NewTabGallery";
 import BestSellsGallery from "../TabGallery/BestSellsGallery";
@@ -31,11 +31,11 @@ const TabContent: React.FC<TabContentProps> = ({ activeTab }) => {
     case "Tab3":
       return (
         <ScrollView style={commonStyles.tabContent}>
-        <SalesGallery
-          data={SalesSlides}
-          onPress={() => console.log("pressed")}
-        />
-      </ScrollView>
+          <SalesGallery
+            data={SalesSlides}
+            onPress={() => console.log("pressed")}
+          />
+        </ScrollView>
       );
     default:
       return null;

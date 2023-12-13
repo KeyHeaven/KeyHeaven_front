@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Image, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Image, Text, TouchableOpacity } from "react-native";
+import SalesGallerySstyles from "./SalesGalleryStyles";
 
 interface SalesGalleryProps {
   data: { title: string; image: any; sales: string }[];
@@ -12,55 +13,23 @@ const handleCardPress = (title: string) => {
 
 const SalesGallery: React.FC<SalesGalleryProps> = ({ data }) => {
   return (
-    <View style={styles.container}>
+    <View style={SalesGallerySstyles.container}>
       {data.map((item, index) => (
         <TouchableOpacity
           key={index}
-          style={styles.card}
+          style={SalesGallerySstyles.card}
           onPress={() => handleCardPress(item.title)}>
-          <Image source={item.image} style={styles.image} resizeMode="cover" />
-          <Text style={styles.text}>{item.title}</Text>
-          <Text style={styles.textSales}>{item.sales}</Text>
+          <Image
+            source={item.image}
+            style={SalesGallerySstyles.image}
+            resizeMode="cover"
+          />
+          <Text style={SalesGallerySstyles.text}>{item.title}</Text>
+          <Text style={SalesGallerySstyles.textSales}>{item.sales}</Text>
         </TouchableOpacity>
       ))}
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "space-between",
-    paddingHorizontal: 16,
-  },
-  card: {
-    width: "48%",
-    height: 150,
-    borderRadius: 6,
-    overflow: "hidden",
-    marginVertical: 8,
-  },
-  image: {
-    width: "100%",
-    height: "100%",
-  },
-  text: {
-    position: "absolute",
-    bottom: 10,
-    left: 10,
-    color: "#fff",
-    fontSize: 14,
-    fontWeight: "bold",
-  },
-  textSales: {
-    position: "absolute",
-    bottom: 10,
-    right: 10,
-    color: "#fff",
-    fontSize: 14,
-    fontWeight: "bold",
-  },
-});
 
 export default SalesGallery;

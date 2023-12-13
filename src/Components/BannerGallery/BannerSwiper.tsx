@@ -1,8 +1,8 @@
 import React from "react";
-import { View, Image, StyleSheet, Text, TouchableOpacity } from "react-native";
+import { View, Image, Text, TouchableOpacity } from "react-native";
 import Swiper from "react-native-swiper";
 import SmallSlides from "../../../Data/SmallSlides";
-
+import BannerStyles from "./BannerSwiperStyle";
 
 const BannerSwiper: React.FC = () => (
   <View style={BannerStyles.container}>
@@ -28,33 +28,5 @@ const BannerSwiper: React.FC = () => (
 const handleSlidePress = (title: string) => {
   console.log(`Slide pressed: ${title}`);
 };
-
-const BannerStyles = StyleSheet.create({
-  container: {
-    marginTop: 50,
-    height: 150,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  slide: {
-    width: 340,
-    height: 100,
-    borderRadius: 6,
-    overflow: "hidden",
-    alignSelf: "center",
-  },
-  image: {
-    width: "100%",
-    height: "100%",
-  },
-  text: {
-    position: "absolute",
-    bottom: 10,
-    left: 10,
-    color: "#fff",
-    fontSize: 14,
-    fontWeight: "bold",
-  },
-});
 
 export default BannerSwiper;
