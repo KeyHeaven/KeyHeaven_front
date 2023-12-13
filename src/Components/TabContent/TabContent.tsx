@@ -6,6 +6,7 @@ import BestSellsGallery from "../TabGallery/BestSellsGallery";
 import slides from "../../../Data/Slides";
 import SalesSlides from "../../../Data/SalesSlides";
 import SalesGallery from "../TabGallery/SalesGallery";
+import BestSellsSlides from "../../../Data/BestSellsSlides";
 
 interface TabContentProps {
   activeTab: string;
@@ -23,7 +24,7 @@ const TabContent: React.FC<TabContentProps> = ({ activeTab }) => {
       return (
         <ScrollView style={commonStyles.tabContent}>
           <BestSellsGallery
-            data={slides}
+            data={BestSellsSlides}
             onPress={() => console.log("pressed")}
           />
         </ScrollView>

@@ -17,9 +17,10 @@ const OfferSwiper: React.FC = () => (
             style={BannerStyles.image}
             resizeMode="cover"
           />
-          <Text style={BannerStyles.text}>{slide.title}</Text>
+          <Text style={BannerStyles.textTitle}>{slide.title}</Text>
           <Text style={BannerStyles.textYear}>{slide.year}</Text>
           <Text style={BannerStyles.textGenre}>{slide.genre}</Text>
+          <Text style={BannerStyles.text}>{slide.promo}</Text>
         </TouchableOpacity>
       ))}
     </Swiper>
