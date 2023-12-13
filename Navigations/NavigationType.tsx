@@ -9,6 +9,10 @@ export interface DetailsScreenProps {
   navigation: StackNavigationProp<any, "Details">;
 }
 
+export interface CartScreenProps {
+  navigation: StackNavigationProp<any, "Cart">;
+}
+
 export interface SplashScreenProps {
   navigation: StackNavigationProp<any, "Splash">;
 }

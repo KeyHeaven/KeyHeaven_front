@@ -10,6 +10,7 @@ import AuthScreen from "../Screens/Authentification/AuthScreen";
 import LoginScreen from "../Screens/Authentification/LoginScreen";
 import SignUpScreen from "../Screens/Authentification/SignUpScreen";
 import GameScreen from "../Screens/ProductScreen/GameScreen";
+import CartScreen from "../Screens/CartScreen";
 
 const Stack = createStackNavigator();
 
@@ -27,6 +28,7 @@ const Navigation: React.FC = () => (
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Details" component={DetailsScreen} />
       <Stack.Screen name="Game" component={GameScreen} />
+      <Stack.Screen name="Cart" component={CartScreen} />
     </Stack.Navigator>
     <StatusBar style="auto" />
   </NavigationContainer>
