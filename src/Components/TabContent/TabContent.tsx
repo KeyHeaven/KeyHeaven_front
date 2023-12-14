@@ -7,33 +7,14 @@ import slides from "../../../Data/Slides";
 import SalesGallery from "../TabGallery/SalesGallery";
 import BestSellsSlides from "../../../Data/BestSellsSlides";
 import OfferSlides from "../../../Data/OfferSlides";
+import handleCardPress from "../../../logic/handleCardPress";
 
 interface TabContentProps {
   activeTab: string;
 }
 
 const TabContent: React.FC<TabContentProps> = ({ activeTab }) => {
-  const handleCardPress = (item: {
-    title: string;
-    image: any;
-    prix: string;
-    editor: string;
-    developer: string;
-    date: string;
-    genre: string;
-    os: string;
-    processor: string;
-    memory: string;
-    graphics: string;
-    storage: string;
-    directX: string;
-    additionalNote: string;
-    screen: string;
-    promo: string;
-    year: string;
-  }) => {
-    console.log("Card pressed:", item);
-  };
+
   switch (activeTab) {
     case "Tab1":
       return (
