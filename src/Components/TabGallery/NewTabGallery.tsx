@@ -17,6 +17,7 @@ const NewTabGallery: React.FC<NewTabGalleryProps> = ({ data, onPress }) => {
     prix: string;
   }) => {
     onPress(item);
+  // @ts-ignore
     navigation.navigate("Game", { item });
   };
 

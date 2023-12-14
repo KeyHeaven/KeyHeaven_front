@@ -1,12 +1,9 @@
 import React, { useState } from "react";
-import { View, Text, Button, ScrollView } from "react-native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { View, ScrollView } from "react-native";
 import commonStyles from "../Styles/Styles";
 import { HomeScreenProps } from "../Navigations/NavigationType";
-import ButtonStyles from "../src/Components/button/ButtonStyles";
 import TopBar from "../src/Components/TopBar/TopBar";
 import BannerSwiper from "../src/Components/BannerGallery/BannerSwiper";
-import CustomButton from "../src/Components/button/CustomBtnComponent";
 import TabButton from "../src/Components/button/TabBtn";
 import TabContent from "../src/Components/TabContent/TabContent";
 import OfferSwiper from "../src/Components/OfferGallery/OfferGallery";
