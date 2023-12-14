@@ -8,6 +8,7 @@ import TabButton from "../src/Components/button/TabBtn";
 import TabContent from "../src/Components/TabContent/TabContent";
 import OfferSwiper from "../src/Components/OfferGallery/OfferGallery";
 import slides from "../Data/Slides";
+import OfferSlides from "../Data/OfferSlides";
 
 const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   const [activeTab, setActiveTab] = useState("Tab1");
@@ -36,7 +37,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   return (
     <ScrollView style={commonStyles.containerHomePage}>
       <TopBar />
-      <BannerSwiper data={slides} onPress={handleCardPress}/>
+      <BannerSwiper data={slides} onPress={handleCardPress} />
       <View style={commonStyles.row}>
         <TabButton
           title="Nouveautés"
@@ -55,7 +56,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
         />
       </View>
       <TabContent activeTab={activeTab} />
-      <OfferSwiper />
+      <OfferSwiper data={OfferSlides} onPress={handleCardPress} />
     </ScrollView>
   );
 };

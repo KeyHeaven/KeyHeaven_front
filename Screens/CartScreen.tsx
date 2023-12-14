@@ -14,63 +14,10 @@ import commonStyles from "../Styles/Styles";
 import TopBar from "../src/Components/TopBar/TopBar";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { cartItems as initialCartItems } from "../Data/CartData";
+
 const CartScreen: React.FC<CartScreenProps> = ({ navigation }) => {
-  const [cartItems, setCartItems] = useState([
-    {
-      id: 1,
-      name: "Counter strike 2",
-      plateforme: "Steam",
-      price: 10,
-      quantity: 1,
-      imageUrl:
-        "https://image.api.playstation.com/cdn/EP1004/CUSA00411_00/eXsWlP0EkcVkLPHgU4pjflmg07252yU8.png",
-    },
-    {
-      id: 2,
-      name: "GTA",
-      plateforme: "Rockstar",
-      price: 20,
-      quantity: 1,
-      imageUrl:
-        "https://image.api.playstation.com/cdn/EP1004/CUSA00411_00/eXsWlP0EkcVkLPHgU4pjflmg07252yU8.png",
-    },
-    {
-      id: 3,
-      name: "Fifa",
-      plateforme: "Xbox",
-      price: 15,
-      quantity: 1,
-      imageUrl:
-        "https://image.api.playstation.com/cdn/EP1004/CUSA00411_00/eXsWlP0EkcVkLPHgU4pjflmg07252yU8.png",
-    },
-    {
-      id: 4,
-      name: "Counter strike 2",
-      plateforme: "Steam",
-      price: 10,
-      quantity: 1,
-      imageUrl:
-        "https://image.api.playstation.com/cdn/EP1004/CUSA00411_00/eXsWlP0EkcVkLPHgU4pjflmg07252yU8.png",
-    },
-    {
-      id: 5,
-      name: "GTA",
-      plateforme: "Rockstar",
-      price: 20,
-      quantity: 1,
-      imageUrl:
-        "https://image.api.playstation.com/cdn/EP1004/CUSA00411_00/eXsWlP0EkcVkLPHgU4pjflmg07252yU8.png",
-    },
-    {
-      id: 6,
-      name: "Fifa",
-      plateforme: "Xbox",
-      price: 15,
-      quantity: 1,
-      imageUrl:
-        "https://image.api.playstation.com/cdn/EP1004/CUSA00411_00/eXsWlP0EkcVkLPHgU4pjflmg07252yU8.png",
-    },
-  ]);
+  const [cartItems, setCartItems] = useState(initialCartItems);
   const handleQuantityChange = (id, delta) => {
     setCartItems((currentItems) =>
       currentItems.map((item) => {
@@ -137,6 +84,7 @@ const CartScreen: React.FC<CartScreenProps> = ({ navigation }) => {
     </View>
   );
 };
+
 const styles = StyleSheet.create({
   cartItemBox: {
     borderWidth: 1,
@@ -147,4 +95,5 @@ const styles = StyleSheet.create({
   },
   // ... (autres styles)
 });
+
 export default CartScreen;
