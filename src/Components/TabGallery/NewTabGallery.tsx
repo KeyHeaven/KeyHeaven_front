@@ -4,8 +4,24 @@ import NewTabGalleryStyles from "./NewTabGalleryStyles";
 import { useNavigation } from "@react-navigation/native";
 
 interface NewTabGalleryProps {
-  data: { title: string; image: any; prix: string }[];
-  onPress: (item: { title: string; image: any; prix: string }) => void;
+  data: {
+    title: string;
+    image: any;
+    prix: string;
+    editor: string;
+    developer: string;
+    date: string;
+    genre: string;
+  }[];
+  onPress: (item: {
+    title: string;
+    image: any;
+    prix: string;
+    editor: string;
+    developer: string;
+    date: string;
+    genre: string;
+  }) => void;
 }
 
 const NewTabGallery: React.FC<NewTabGalleryProps> = ({ data, onPress }) => {
@@ -15,9 +31,13 @@ const NewTabGallery: React.FC<NewTabGalleryProps> = ({ data, onPress }) => {
     title: string;
     image: any;
     prix: string;
+    editor: string;
+    developer: string;
+    date: string;
+    genre: string;
   }) => {
     onPress(item);
-  // @ts-ignore
+    // @ts-ignore
     navigation.navigate("Game", { item });
   };
 

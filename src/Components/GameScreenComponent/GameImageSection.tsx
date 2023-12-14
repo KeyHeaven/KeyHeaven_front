@@ -1,4 +1,3 @@
-// GameImageSection.tsx
 import React from "react";
 import { View, Text, Image } from "react-native";
 import gameStyles from "../../../Styles/GameStyles";

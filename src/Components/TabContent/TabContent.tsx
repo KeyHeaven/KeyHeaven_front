@@ -17,6 +17,10 @@ const TabContent: React.FC<TabContentProps> = ({ activeTab }) => {
     title: string;
     image: any;
     prix: string;
+    editor: string;
+    developer: string;
+    date: string;
+    genre: string;
   }) => {
     console.log("Card pressed:", item);
   };

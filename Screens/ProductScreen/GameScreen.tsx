@@ -13,9 +13,19 @@ import GameDescriptionSection from "../../src/Components/GameScreenComponent/Gam
 import GameRequirementsSection from "../../src/Components/GameScreenComponent/GameRequirementsSection";
 
 const GameScreen: React.FC<GameScreenProps> = ({ route, navigation }) => {
-  const { item } = route.params as { item: { title: string; image: any; prix: string } };
+  const { item } = route.params as {
+    item: {
+      title: string;
+      image: any;
+      prix: string;
+      developer: string;
+      editor: string;
+      date: string;
+      genre: string;
+    };
+  };
 
-  return ( // Ajout du return
+  return (
     <ScrollView style={commonStyles.containerHomePage}>
       <TopBar />
       <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -54,7 +64,7 @@ const GameScreen: React.FC<GameScreenProps> = ({ route, navigation }) => {
           </TouchableOpacity>
         </View>
 
-        <GameDescriptionSection  />
+        <GameDescriptionSection item={item} />
         <GameRequirementsSection />
       </View>
     </ScrollView>
