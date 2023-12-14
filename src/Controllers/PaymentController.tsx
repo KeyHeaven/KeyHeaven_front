@@ -7,7 +7,6 @@ export const createPaymentIntent = async (items) => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            priceId: 1000,
             customerId: 'cus_PAran2pH3B5egS',
             items: items
         }),
