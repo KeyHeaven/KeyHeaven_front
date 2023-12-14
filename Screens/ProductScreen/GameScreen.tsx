@@ -22,6 +22,14 @@ const GameScreen: React.FC<GameScreenProps> = ({ route, navigation }) => {
       editor: string;
       date: string;
       genre: string;
+      os: string;
+      processor: string;
+      memory: string;
+      graphics: string;
+      storage: string;
+      directX: string;
+      additionalNote: string;
+      screen: string;
     };
   };
 
@@ -65,7 +73,7 @@ const GameScreen: React.FC<GameScreenProps> = ({ route, navigation }) => {
         </View>
 
         <GameDescriptionSection item={item} />
-        <GameRequirementsSection />
+        <GameRequirementsSection item={item}/>
       </View>
     </ScrollView>
   );

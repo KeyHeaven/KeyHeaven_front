@@ -12,6 +12,14 @@ interface NewTabGalleryProps {
     developer: string;
     date: string;
     genre: string;
+    os: string;
+    processor: string;
+    memory: string;
+    graphics: string;
+    storage: string;
+    directX: string;
+    additionalNote: string;
+    screen: string;
   }[];
   onPress: (item: {
     title: string;
@@ -21,6 +29,14 @@ interface NewTabGalleryProps {
     developer: string;
     date: string;
     genre: string;
+    os: string;
+    processor: string;
+    memory: string;
+    graphics: string;
+    storage: string;
+    directX: string;
+    additionalNote: string;
+    screen: string;
   }) => void;
 }
 
@@ -35,6 +51,14 @@ const NewTabGallery: React.FC<NewTabGalleryProps> = ({ data, onPress }) => {
     developer: string;
     date: string;
     genre: string;
+    os: string;
+    processor: string;
+    memory: string;
+    graphics: string;
+    storage: string;
+    directX: string;
+    additionalNote: string;
+    screen: string;
   }) => {
     onPress(item);
     // @ts-ignore
