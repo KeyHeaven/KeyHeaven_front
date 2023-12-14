@@ -7,14 +7,36 @@ import BannerSwiper from "../src/Components/BannerGallery/BannerSwiper";
 import TabButton from "../src/Components/button/TabBtn";
 import TabContent from "../src/Components/TabContent/TabContent";
 import OfferSwiper from "../src/Components/OfferGallery/OfferGallery";
+import slides from "../Data/Slides";
 
 const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   const [activeTab, setActiveTab] = useState("Tab1");
+  const handleCardPress = (item: {
+    title: string;
+    image: any;
+    prix: string;
+    editor: string;
+    developer: string;
+    date: string;
+    genre: string;
+    os: string;
+    processor: string;
+    memory: string;
+    graphics: string;
+    storage: string;
+    directX: string;
+    additionalNote: string;
+    screen: string;
+    promo: string;
+    year: string;
+  }) => {
+    console.log("Card pressed:", item);
+  };
 
   return (
     <ScrollView style={commonStyles.containerHomePage}>
       <TopBar />
-      <BannerSwiper />
+      <BannerSwiper data={slides} onPress={handleCardPress}/>
       <View style={commonStyles.row}>
         <TabButton
           title="Nouveautés"

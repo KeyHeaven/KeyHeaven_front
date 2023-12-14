@@ -4,9 +4,9 @@ import commonStyles from "../../../Styles/Styles";
 import NewTabGallery from "../TabGallery/NewTabGallery";
 import BestSellsGallery from "../TabGallery/BestSellsGallery";
 import slides from "../../../Data/Slides";
-import SalesSlides from "../../../Data/SalesSlides";
 import SalesGallery from "../TabGallery/SalesGallery";
 import BestSellsSlides from "../../../Data/BestSellsSlides";
+import OfferSlides from "../../../Data/OfferSlides";
 
 interface TabContentProps {
   activeTab: string;
@@ -21,6 +21,16 @@ const TabContent: React.FC<TabContentProps> = ({ activeTab }) => {
     developer: string;
     date: string;
     genre: string;
+    os: string;
+    processor: string;
+    memory: string;
+    graphics: string;
+    storage: string;
+    directX: string;
+    additionalNote: string;
+    screen: string;
+    promo: string;
+    year: string;
   }) => {
     console.log("Card pressed:", item);
   };
@@ -34,19 +44,13 @@ const TabContent: React.FC<TabContentProps> = ({ activeTab }) => {
     case "Tab2":
       return (
         <ScrollView style={commonStyles.tabContent}>
-          <BestSellsGallery
-            data={BestSellsSlides}
-            onPress={() => console.log("pressed")}
-          />
+          <BestSellsGallery data={BestSellsSlides} onPress={handleCardPress} />
         </ScrollView>
       );
     case "Tab3":
       return (
         <ScrollView style={commonStyles.tabContent}>
-          <SalesGallery
-            data={SalesSlides}
-            onPress={() => console.log("pressed")}
-          />
+          <SalesGallery data={OfferSlides} onPress={handleCardPress} />
         </ScrollView>
       );
     default:
