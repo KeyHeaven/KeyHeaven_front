@@ -52,13 +52,17 @@ const commonStyles = StyleSheet.create({
   // start cart
   modalView: {
     margin: 20,
-    backgroundColor: "white",
+    backgroundColor: "#323232",
     borderRadius: 20,
     padding: 35,
+    boxShadow: "0 3px 6px rgba(0,0,0,0.16)",
+    border: "1px solid #000000",
   },
+
   modalText: {
     marginBottom: 15,
     textAlign: "center",
+    color: "#fff",
   },
   modalButtons: {
     flexDirection: "row",
