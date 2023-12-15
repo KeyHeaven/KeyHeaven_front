@@ -23,6 +23,7 @@ const commonStyles = StyleSheet.create({
   containerHomePage: {
     backgroundColor: "#272727",
     flex: 1,
+    padding: 10,
   },
   ContainerTopBar: {
     position: "relative",
@@ -144,6 +145,26 @@ const commonStyles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-around",
     marginVertical: 10,
+  },
+  cartBadge: {
+    position: "absolute",
+    top: 0,
+    right: 0,
+    backgroundColor: "red",
+    borderRadius: 10,
+    paddingHorizontal: 5,
+    paddingVertical: 2,
+  },
+  cartItemBox: {
+    borderWidth: 1,
+    backgroundColor: "#323232",
+    padding: 10,
+    marginVertical: 5,
+    borderRadius: 10,
+  },
+  cartBadgeText: {
+    color: "white",
+    fontSize: 12,
   },
 });
 

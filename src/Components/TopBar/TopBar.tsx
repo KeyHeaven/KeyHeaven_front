@@ -1,5 +1,5 @@
-import React from "react";
-import { TouchableOpacity, View } from "react-native";
+import React, { useEffect, useState } from "react";
+import { TouchableOpacity, View, Text } from "react-native";
 import {
   faUser,
   faSearch,
@@ -8,10 +8,12 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import SearchInput from "react-native-search-filter";
 import commonStyles from "../../../Styles/Styles";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation } from '@react-navigation/native';
+import { useCart } from "../../Controllers/CartController";
 
 const TopBar: React.FC = () => {
   const navigation = useNavigation();
+  const { cartCount } = useCart();
 
   const handleUserIconPress = () => {
     console.log("User icon pressed");
@@ -22,6 +24,7 @@ const TopBar: React.FC = () => {
     navigation.navigate("Cart");
   };
 
+
   return (
     <View style={commonStyles.ContainerTopBar}>
       <TouchableOpacity onPress={handleUserIconPress}>
@@ -30,7 +33,6 @@ const TopBar: React.FC = () => {
             height: 40,
             width: 40,
             marginLeft: 10,
-            padding: 10,
             color: "#fff",
           }}
           icon={faUser}
@@ -48,16 +50,22 @@ const TopBar: React.FC = () => {
         />
       </View>
       <TouchableOpacity onPress={handleCartIconPress}>
-        <FontAwesomeIcon
-          style={{
-            height: 40,
-            width: 40,
-            marginRight: 10,
-            color: "#fff",
-            padding: 10,
-          }}
-          icon={faCartShopping}
-        />
+        <View>
+          <FontAwesomeIcon
+            style={{
+              height: 40,
+              width: 40,
+              marginRight: 10,
+              color: "#fff",
+            }}
+            icon={faCartShopping}
+          />
+          {cartCount > 0 && (
+            <View style={commonStyles.cartBadge}>
+              <Text style={commonStyles.cartBadgeText}>{cartCount}</Text>
+            </View>
+          )}
+        </View>
       </TouchableOpacity>
     </View>
   );

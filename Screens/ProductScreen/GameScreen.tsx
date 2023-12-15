@@ -13,6 +13,9 @@ import GameDescriptionSection from "../../src/Components/GameScreenComponent/Gam
 import GameRequirementsSection from "../../src/Components/GameScreenComponent/GameRequirementsSection";
 
 const GameScreen: React.FC<GameScreenProps> = ({ route, navigation }) => {
+  const handleCart = async () => {
+    await addToCart({ id: Math.random(), name: 'Counter strike 2', plateforme: "Steam", price: 10, quantity: 1, imageUrl: "https://image.api.playstation.com/cdn/EP1004/CUSA00411_00/eXsWlP0EkcVkLPHgU4pjflmg07252yU8.png" });
+  }
   const { item } = route.params as {
     item: {
       title: string;
@@ -67,16 +70,20 @@ const GameScreen: React.FC<GameScreenProps> = ({ route, navigation }) => {
           <Counter />
           <TouchableOpacity
             style={gameStyles.cardButtonPay}
-            onPress={() => console.log("Bouton pressé")}>
+            onPress={() => handleCart()}>
             <Text style={gameStyles.textTitle}>Ajouter au panier</Text>
           </TouchableOpacity>
         </View>
 
         <GameDescriptionSection item={item} />
-        <GameRequirementsSection item={item}/>
+        <GameRequirementsSection item={item} />
       </View>
     </ScrollView>
   );
 };
 
 export default GameScreen;
+function addToCart(arg0: { id: number; name: string; plateforme: string; price: number; quantity: number; imageUrl: string; }) {
+  throw new Error("Function not implemented.");
+}
+

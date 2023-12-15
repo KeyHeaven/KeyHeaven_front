@@ -18,12 +18,12 @@ const PaymentSuccessModal = ({ visible, onReturn, onDetails }) => {
                         <CustomButton
                             onPress={onReturn}
                             buttonText="Retour"
-                            styles={{width: 120,}}
+                            styles={{ width: 120, }}
                         />
                         <CustomButton
                             onPress={onDetails}
                             buttonText="Détails"
-                            styles={{width: 120,}}
+                            styles={{ width: 120, }}
                         />
                     </View>
                 </View>
