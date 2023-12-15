@@ -1,9 +1,10 @@
 import React from "react";
 import { View, Text, Image } from "react-native";
 import gameStyles from "../../../Styles/GameStyles";
+import Product from "../../Interfaces/Product";
 
 interface GameImageSectionProps {
-  item: { title: string; image: any; prix: string };
+  item: Product;
 }
 
 const GameImageSection: React.FC<GameImageSectionProps> = ({ item }) => (
@@ -16,7 +17,7 @@ const GameImageSection: React.FC<GameImageSectionProps> = ({ item }) => (
       {item.title}
     </Text>
     <Text style={[gameStyles.gamePrice, gameStyles.overlayText]}>
-      {`€${item.prix}`}
+      {`€${item.price}`}
     </Text>
   </View>
 );

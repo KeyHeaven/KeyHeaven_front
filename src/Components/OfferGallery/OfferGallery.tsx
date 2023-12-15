@@ -4,70 +4,17 @@ import Swiper from "react-native-swiper";
 import OfferSlides from "../../../Data/OfferSlides";
 import BannerStyles from "./OfferGalleryStyles";
 import { useNavigation } from "@react-navigation/native";
+import Product from "../../Interfaces/Product";
 
 interface OfferSwiperProps {
-  data: {
-    title: string;
-    image: any;
-    prix: string;
-    editor: string;
-    developer: string;
-    date: string;
-    genre: string;
-    os: string;
-    processor: string;
-    memory: string;
-    graphics: string;
-    storage: string;
-    directX: string;
-    additionalNote: string;
-    screen: string;
-    promo: string;
-    year: string;
-  }[];
-  onPress: (item: {
-    title: string;
-    image: any;
-    prix: string;
-    editor: string;
-    developer: string;
-    date: string;
-    genre: string;
-    os: string;
-    processor: string;
-    memory: string;
-    graphics: string;
-    storage: string;
-    directX: string;
-    additionalNote: string;
-    screen: string;
-    promo: string;
-    year: string;
-  }) => void;
+  data: Product[];
+  onPress: (item: Product) => void;
 }
 
 const OfferSwiper: React.FC<OfferSwiperProps> = ({ data, onPress }) => {
   const navigation = useNavigation();
 
-  const handleSlidePress = (item: {
-    title: string;
-    image: any;
-    prix: string;
-    editor: string;
-    developer: string;
-    date: string;
-    genre: string;
-    os: string;
-    processor: string;
-    memory: string;
-    graphics: string;
-    storage: string;
-    directX: string;
-    additionalNote: string;
-    screen: string;
-    promo: string;
-    year: string;
-  }) => {
+  const handleSlidePress = (item: Product) => {
     onPress(item);
     console.log("Card pressed:", item);
     // @ts-ignore

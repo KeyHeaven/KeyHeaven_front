@@ -2,64 +2,17 @@ import React from "react";
 import { View, Image, Text, TouchableOpacity } from "react-native";
 import NewTabGalleryStyles from "./NewTabGalleryStyles";
 import { useNavigation } from "@react-navigation/native";
+import Product from "../../Interfaces/Product";
 
 interface NewTabGalleryProps {
-  data: {
-    title: string;
-    image: any;
-    prix: string;
-    editor: string;
-    developer: string;
-    date: string;
-    genre: string;
-    os: string;
-    processor: string;
-    memory: string;
-    graphics: string;
-    storage: string;
-    directX: string;
-    additionalNote: string;
-    screen: string;
-  }[];
-  onPress: (item: {
-    title: string;
-    image: any;
-    prix: string;
-    editor: string;
-    developer: string;
-    date: string;
-    genre: string;
-    os: string;
-    processor: string;
-    memory: string;
-    graphics: string;
-    storage: string;
-    directX: string;
-    additionalNote: string;
-    screen: string;
-  }) => void;
+  data: Product[];
+  onPress: (item: Product) => void;
 }
 
 const NewTabGallery: React.FC<NewTabGalleryProps> = ({ data, onPress }) => {
   const navigation = useNavigation();
 
-  const handleCardPress = (item: {
-    title: string;
-    image: any;
-    prix: string;
-    editor: string;
-    developer: string;
-    date: string;
-    genre: string;
-    os: string;
-    processor: string;
-    memory: string;
-    graphics: string;
-    storage: string;
-    directX: string;
-    additionalNote: string;
-    screen: string;
-  }) => {
+  const handleCardPress = (item: Product) => {
     onPress(item);
     // @ts-ignore
     navigation.navigate("Game", { item });

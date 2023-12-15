@@ -7,9 +7,10 @@ import {
   faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
 import commonStyles from "../../../Styles/Styles";
+import Product from "../../Interfaces/Product";
 
 interface CartItemProps {
-  item: any;
+  item: Product;
   handleQuantityChange: any;
 }
 
@@ -19,7 +20,7 @@ const CartScreen: React.FC<CartItemProps> = ({
 }) => {
   return (
     <View style={commonStyles.cartItem}>
-      <Image source={{ uri: item.imageUrl }} style={commonStyles.cartImage} />
+      <Image source={item.image } style={commonStyles.cartImage} />
       <View style={{ flex: 1, marginTop: 10 }}>
         <View
           style={{
@@ -27,7 +28,7 @@ const CartScreen: React.FC<CartItemProps> = ({
             justifyContent: "space-between",
             alignItems: "center",
           }}>
-          <Text style={{ fontSize: 18, color: "#fff" }}>{item.name}</Text>
+          <Text style={{ fontSize: 18, color: "#fff" }}>{item.title}</Text>
         </View>
         <View
           style={{

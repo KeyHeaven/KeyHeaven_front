@@ -1,24 +1,11 @@
-const BestSellsSlides: Array<{
-  title: string;
-  image: any;
-  prix: string;
-  developer: string;
-  editor: string;
-  genre: string;
-  date: string;
-  os: string;
-  processor: string;
-  memory: string;
-  graphics: string;
-  storage: string;
-  directX: string;
-  additionalNote: string;
-  screen: string;
-}> = [
+import Product from "../src/Interfaces/Product";
+
+const BestSellsSlides: Array<Product> = [
   {
+    id: Math.floor(Math.random() * 1000),
     title: "Alan Wake II",
     image: require("../assets/images/alan.jpg"),
-    prix: "69.99",
+    price: 69.99,
     developer: "Remedy Entertainment",
     editor: "Remedy Entertainment",
     genre: "Action / Aventure",
@@ -33,9 +20,10 @@ const BestSellsSlides: Array<{
     screen: "1024x768",
   },
   {
+    id: Math.floor(Math.random() * 1000),
     title: "Elden ring",
     image: require("../assets/images/elden.jpeg"),
-    prix: "69.99",
+    price: 69.99,
     developer: "FromSoftware",
     editor: "Bandai Namco",
     genre: "Action / RPG",
@@ -50,9 +38,10 @@ const BestSellsSlides: Array<{
     screen: "1024x768",
   },
   {
+    id: Math.floor(Math.random() * 1000),
     title: "NBA 2K24",
     image: require("../assets/images/nba.jpeg"),
-    prix: "69.99",
+    price: 69.99,
     developer: "Visual Concepts",
     editor: "2K Sports",
     genre: "Sport",
@@ -67,9 +56,10 @@ const BestSellsSlides: Array<{
     screen: "1024x768",
   },
   {
+    id: Math.floor(Math.random() * 1000),
     title: "Gohstrunner II",
     image: require("../assets/images/ghost.jpeg"),
-    prix: "69.99",
+    price: 69.99,
     developer: "One More Level",
     editor: "505 Games",
     genre: "Action / Aventure",
@@ -84,9 +74,10 @@ const BestSellsSlides: Array<{
     screen: "1024x768",
   },
   {
+    id: Math.floor(Math.random() * 1000),
     title: "Spiderman 2",
     image: require("../assets/images/spidey.png"),
-    prix: "69.99",
+    price: 69.99,
     developer: "Insomniac Games",
     editor: "Sony Interactive Entertainment",
     genre: "Action / Aventure",
@@ -101,9 +92,10 @@ const BestSellsSlides: Array<{
     screen: "1024x768",
   },
   {
+    id: Math.floor(Math.random() * 1000),
     title: "Sonic Adventure 2",
     image: require("../assets/images/sonic.png"),
-    prix: "69.99",
+    price: 69.99,
     developer: "Sonic Team",
     editor: "Sega",
     genre: "Action / Aventure",

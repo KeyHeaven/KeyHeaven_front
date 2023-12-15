@@ -25,15 +25,14 @@ export const CartProvider = ({ children }) => {
         setCartCount(cartItems.length);
     }, [cartItems]);
     const addToCart = async (item) => {
-        console.log('ici');
         try {
             let updatedItems = [...cartItems];
             const existingItemIndex = updatedItems.findIndex((cartItem) => cartItem.id === item.id);
-
             if (existingItemIndex !== -1) {
                 updatedItems[existingItemIndex].quantity += item.quantity;
             } else {
-                updatedItems.push(item);
+                const newItem = { ...item, quantity: 1 };
+                updatedItems.push(newItem);
             }
 
             await AsyncStorage.setItem('panier', JSON.stringify(updatedItems));
