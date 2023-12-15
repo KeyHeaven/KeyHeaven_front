@@ -2,70 +2,17 @@ import React from "react";
 import { View, Image, Text, TouchableOpacity } from "react-native";
 import SalesGallerySstyles from "./SalesGalleryStyles";
 import { useNavigation } from "@react-navigation/native";
+import Product from "../../Interfaces/Product";
 
 interface SalesGalleryProps {
-  data: {
-    title: string;
-    image: any;
-    prix: string;
-    editor: string;
-    developer: string;
-    date: string;
-    genre: string;
-    os: string;
-    processor: string;
-    memory: string;
-    graphics: string;
-    storage: string;
-    directX: string;
-    additionalNote: string;
-    screen: string;
-    promo: string;
-    year: string;
-  }[];
-  onPress: (item: {
-    title: string;
-    image: any;
-    prix: string;
-    editor: string;
-    developer: string;
-    date: string;
-    genre: string;
-    os: string;
-    processor: string;
-    memory: string;
-    graphics: string;
-    storage: string;
-    directX: string;
-    additionalNote: string;
-    screen: string;
-    promo: string;
-    year: string;
-  }) => void;
+  data: Product[];
+  onPress: (item: Product) => void;
 }
 
 const SalesGallery: React.FC<SalesGalleryProps> = ({ data, onPress }) => {
   const navigation = useNavigation();
 
-  const handleCardPress = (item: {
-    title: string;
-    image: any;
-    prix: string;
-    editor: string;
-    developer: string;
-    date: string;
-    genre: string;
-    os: string;
-    processor: string;
-    memory: string;
-    graphics: string;
-    storage: string;
-    directX: string;
-    additionalNote: string;
-    screen: string;
-    promo: string;
-    year: string;
-  }) => {
+  const handleCardPress = (item: Product) => {
     onPress(item);
     // @ts-ignore
     navigation.navigate("Game", { item });

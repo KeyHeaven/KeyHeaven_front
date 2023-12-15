@@ -4,63 +4,16 @@ import Swiper from "react-native-swiper";
 import BannerStyles from "./BannerSwiperStyle";
 import slides from "../../../Data/Slides";
 import { useNavigation } from "@react-navigation/native";
+import Product from "../../Interfaces/Product";
 
 interface BannerSwiperProps {
-  data: {
-    title: string;
-    image: any;
-    prix: string;
-    editor: string;
-    developer: string;
-    date: string;
-    genre: string;
-    os: string;
-    processor: string;
-    memory: string;
-    graphics: string;
-    storage: string;
-    directX: string;
-    additionalNote: string;
-    screen: string;
-  }[];
-  onPress: (item: {
-    title: string;
-    image: any;
-    prix: string;
-    editor: string;
-    developer: string;
-    date: string;
-    genre: string;
-    os: string;
-    processor: string;
-    memory: string;
-    graphics: string;
-    storage: string;
-    directX: string;
-    additionalNote: string;
-    screen: string;
-  }) => void;
+  data: Product[];
+  onPress: (item: Product) => void;
 }
 
 const BannerSwiper: React.FC<BannerSwiperProps> = ({ data, onPress }) => {
   const navigation = useNavigation();
-  const handleSlidePress = (item: {
-    title: string;
-    image: any;
-    prix: string;
-    editor: string;
-    developer: string;
-    date: string;
-    genre: string;
-    os: string;
-    processor: string;
-    memory: string;
-    graphics: string;
-    storage: string;
-    directX: string;
-    additionalNote: string;
-    screen: string;
-  }) => {
+  const handleSlidePress = (item: Product) => {
     onPress(item);
     console.log("Card pressed:", item);
     // @ts-ignore

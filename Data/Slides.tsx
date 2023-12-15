@@ -1,24 +1,11 @@
-const slides: Array<{
-  title: string;
-  image: any;
-  prix: string;
-  developer: string;
-  editor: string;
-  genre: string;
-  date: string;
-  os: string;
-  processor: string;
-  memory: string;
-  graphics: string;
-  storage: string;
-  directX: string;
-  additionalNote: string;
-  screen: string;
-}> = [
+import Product from "../src/Interfaces/Product";
+
+const slides: Array<Product> = [
   {
+    id: Math.floor(Math.random() * 1000),
     title: "Cyberpunk 2077",
     image: require("../assets/images/cyber.png"),
-    prix: "69.99",
+    price: 69.99,
     developer: "CD Projekt Red",
     editor: "CD Projekt",
     genre: "RPG / FPS",
@@ -33,9 +20,10 @@ const slides: Array<{
     screen: "1024x768",
   },
   {
+    id: Math.floor(Math.random() * 1000),
     title: "Baldur's gate III",
     image: require("../assets/images/baldur.jpg"),
-    prix: "69.99",
+    price: 69.99,
     developer: "Larian Studios",
     editor: "Larian Studios",
     genre: "RPG / Aventure",
@@ -50,9 +38,10 @@ const slides: Array<{
     screen: "1024x768",
   },
   {
+    id: Math.floor(Math.random() * 1000),
     title: "Tales of Symphonia",
     image: require("../assets/images/tales.jpg"),
-    prix: "69.99",
+    price: 69.99,
     developer: "Bandai Namco",
     editor: "Bandai Namco",
     genre: "RPG / Aventure",
@@ -67,9 +56,10 @@ const slides: Array<{
     screen: "1024x768",
   },
   {
+    id: Math.floor(Math.random() * 1000),
     title: "Gohstrunner II",
     image: require("../assets/images/ghost.jpeg"),
-    prix: "69.99",
+    price: 69.99,
     developer: "One More Level",
     editor: "505 Games",
     genre: "Action / Aventure",
@@ -84,9 +74,10 @@ const slides: Array<{
     screen: "1024x768",
   },
   {
+    id: Math.floor(Math.random() * 1000),
     title: "Spiderman 2",
     image: require("../assets/images/spidey.png"),
-    prix: "69.99",
+    price: 69.99,
     developer: "Insomniac Games",
     editor: "Sony Interactive Entertainment",
     genre: "Action / Aventure",
@@ -101,9 +92,10 @@ const slides: Array<{
     screen: "1024x768",
   },
   {
+    id: Math.floor(Math.random() * 1000),
     title: "Sonic Adventure 2",
     image: require("../assets/images/sonic.png"),
-    prix: "69.99",
+    price: 69.99,
     developer: "Sonic Team",
     editor: "Sega",
     genre: "Action / Aventure",

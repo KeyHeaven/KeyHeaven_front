@@ -11,30 +11,19 @@ import { ScrollView } from "react-native-gesture-handler";
 import GameImageSection from "../../src/Components/GameScreenComponent/GameImageSection";
 import GameDescriptionSection from "../../src/Components/GameScreenComponent/GameDescriptionSection";
 import GameRequirementsSection from "../../src/Components/GameScreenComponent/GameRequirementsSection";
+import Product from "../../src/Interfaces/Product";
+import { useCart } from "../../src/Controllers/CartController";
 
 const GameScreen: React.FC<GameScreenProps> = ({ route, navigation }) => {
-  const handleCart = async () => {
-    await addToCart({ id: Math.random(), name: 'Counter strike 2', plateforme: "Steam", price: 10, quantity: 1, imageUrl: "https://image.api.playstation.com/cdn/EP1004/CUSA00411_00/eXsWlP0EkcVkLPHgU4pjflmg07252yU8.png" });
-  }
+
   const { item } = route.params as {
-    item: {
-      title: string;
-      image: any;
-      prix: string;
-      developer: string;
-      editor: string;
-      date: string;
-      genre: string;
-      os: string;
-      processor: string;
-      memory: string;
-      graphics: string;
-      storage: string;
-      directX: string;
-      additionalNote: string;
-      screen: string;
-    };
+    item: Product;
   };
+  const { addToCart } = useCart();
+
+  const handleCart = async () => {
+    await addToCart(item);
+  }
 
   return (
     <ScrollView style={commonStyles.containerHomePage}>
@@ -83,7 +72,5 @@ const GameScreen: React.FC<GameScreenProps> = ({ route, navigation }) => {
 };
 
 export default GameScreen;
-function addToCart(arg0: { id: number; name: string; plateforme: string; price: number; quantity: number; imageUrl: string; }) {
-  throw new Error("Function not implemented.");
-}
+
 
