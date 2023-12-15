@@ -32,4 +32,5 @@ export interface SignUpScreenProps {
 
 export interface GameScreenProps {
   navigation: StackNavigationProp<any, "Game">;
+  route: any;
 }

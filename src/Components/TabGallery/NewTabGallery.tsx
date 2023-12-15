@@ -4,25 +4,74 @@ import NewTabGalleryStyles from "./NewTabGalleryStyles";
 import { useNavigation } from "@react-navigation/native";
 
 interface NewTabGalleryProps {
-  data: { title: string; image: any }[];
-  onPress: (title: string) => void;
+  data: {
+    title: string;
+    image: any;
+    prix: string;
+    editor: string;
+    developer: string;
+    date: string;
+    genre: string;
+    os: string;
+    processor: string;
+    memory: string;
+    graphics: string;
+    storage: string;
+    directX: string;
+    additionalNote: string;
+    screen: string;
+  }[];
+  onPress: (item: {
+    title: string;
+    image: any;
+    prix: string;
+    editor: string;
+    developer: string;
+    date: string;
+    genre: string;
+    os: string;
+    processor: string;
+    memory: string;
+    graphics: string;
+    storage: string;
+    directX: string;
+    additionalNote: string;
+    screen: string;
+  }) => void;
 }
 
-
-
-const NewTabGallery: React.FC<NewTabGalleryProps> = ({ data }) => {
+const NewTabGallery: React.FC<NewTabGalleryProps> = ({ data, onPress }) => {
   const navigation = useNavigation();
-  const handleCardPress = (title: string) => {
+
+  const handleCardPress = (item: {
+    title: string;
+    image: any;
+    prix: string;
+    editor: string;
+    developer: string;
+    date: string;
+    genre: string;
+    os: string;
+    processor: string;
+    memory: string;
+    graphics: string;
+    storage: string;
+    directX: string;
+    additionalNote: string;
+    screen: string;
+  }) => {
+    onPress(item);
     // @ts-ignore
-    navigation.navigate("Game")
+    navigation.navigate("Game", { item });
   };
+
   return (
     <View style={NewTabGalleryStyles.container}>
       {data.map((item, index) => (
         <TouchableOpacity
           key={index}
           style={NewTabGalleryStyles.card}
-          onPress={() => handleCardPress(item.title)}>
+          onPress={() => handleCardPress(item)}>
           <Image
             source={item.image}
             style={NewTabGalleryStyles.image}

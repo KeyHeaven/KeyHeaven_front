@@ -1,23 +1,24 @@
 import React, { useState } from "react";
-import { View, Text, Button, ScrollView } from "react-native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { View, ScrollView } from "react-native";
 import commonStyles from "../Styles/Styles";
 import { HomeScreenProps } from "../Navigations/NavigationType";
-import ButtonStyles from "../src/Components/button/ButtonStyles";
 import TopBar from "../src/Components/TopBar/TopBar";
 import BannerSwiper from "../src/Components/BannerGallery/BannerSwiper";
-import CustomButton from "../src/Components/button/CustomBtnComponent";
 import TabButton from "../src/Components/button/TabBtn";
 import TabContent from "../src/Components/TabContent/TabContent";
 import OfferSwiper from "../src/Components/OfferGallery/OfferGallery";
+import slides from "../Data/Slides";
+import OfferSlides from "../Data/OfferSlides";
+import handleCardPress from "../logic/handleCardPress";
 
 const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   const [activeTab, setActiveTab] = useState("Tab1");
 
+
   return (
     <ScrollView style={commonStyles.containerHomePage}>
       <TopBar />
-      <BannerSwiper />
+      <BannerSwiper data={slides} onPress={handleCardPress} />
       <View style={commonStyles.row}>
         <TabButton
           title="Nouveautés"
@@ -36,13 +37,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
         />
       </View>
       <TabContent activeTab={activeTab} />
-      <OfferSwiper />
-      <View style={ButtonStyles.buttonContainer}>
-        <CustomButton
-          buttonText="Aller à l'écran suivant"
-          onPress={() => navigation.navigate("Details")}
-        />
-      </View>
+      <OfferSwiper data={OfferSlides} onPress={handleCardPress} />
     </ScrollView>
   );
 };
