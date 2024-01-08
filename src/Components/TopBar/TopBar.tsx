@@ -16,7 +16,8 @@ const TopBar: React.FC = () => {
   const { cartCount } = useCart();
 
   const handleUserIconPress = () => {
-    console.log("User icon pressed");
+      // @ts-ignore
+      navigation.navigate("Profile");
   };
 
   const handleCartIconPress = () => {
