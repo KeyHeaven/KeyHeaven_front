@@ -5,7 +5,7 @@ import { SignUpScreenProps } from "../../Navigations/NavigationType";
 import TextStyle from "../../Styles/TextStyle";
 import CustomButton from "../../src/Components/button/CustomBtnComponent";
 import { faLock, faUser } from "@fortawesome/free-solid-svg-icons";
-import CustomInputAuth from "../../src/Components/input/CustomInputAuth";
+import CustomInput from "../../src/Components/input/CustomInput";
 
 const SignUpScreen: React.FC<SignUpScreenProps> = ({ navigation }) => (
   <View style={commonStyles.containerHome}>
@@ -21,10 +21,10 @@ const SignUpScreen: React.FC<SignUpScreenProps> = ({ navigation }) => (
       <Text style={TextStyle.title}>Keyheaven</Text>
     </View>
     <View style={{ marginTop: 100 }}>
-      <CustomInputAuth icon={faUser} placeholder="Pseudo" />
-      <CustomInputAuth icon={faUser} placeholder="Adresse E-mail" />
-      <CustomInputAuth icon={faLock} placeholder="Mot de passe" />
-      <CustomInputAuth icon={faLock} placeholder="Confirmation Mot de passe" />
+      <CustomInput icon={faUser} placeholder="Pseudo" />
+      <CustomInput icon={faUser} placeholder="Adresse E-mail" />
+      <CustomInput icon={faLock} placeholder="Mot de passe" />
+      <CustomInput icon={faLock} placeholder="Confirmation Mot de passe" />
     </View>
     <View style={{ marginBottom: 20, top: 10 }}>
       <CustomButton
