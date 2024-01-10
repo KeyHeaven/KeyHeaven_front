@@ -18,7 +18,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   return (
     <ScrollView style={commonStyles.containerHomePage}>
       <TopBar />
-      <BannerSwiper data={slides} onPress={handleCardPress} />
+      <BannerSwiper data={slides} onPress={handleCardPress}/>
       <View style={commonStyles.row}>
         <TabButton
           title="Nouveautés"
