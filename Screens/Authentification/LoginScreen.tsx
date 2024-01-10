@@ -20,10 +20,8 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => (
     <View>
       <Text style={TextStyle.title}>Keyheaven</Text>
     </View>
-    <View style={{ marginTop: 100 }}>
       <CustomInput icon={faUser} placeholder="Adresse E-mail" />
       <CustomInput icon={faLock} placeholder="Mot de passe" isPassword={true} />
-    </View>
     <View style={{ marginBottom: 20, top: 70 }}>
       <CustomButton
         onPress={() => navigation.navigate("Home")}

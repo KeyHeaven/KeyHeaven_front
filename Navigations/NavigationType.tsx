@@ -34,3 +34,18 @@ export interface GameScreenProps {
   navigation: StackNavigationProp<any, "Game">;
   route: any;
 }
+export interface ProfileScreenProps {
+    navigation: StackNavigationProp<any, "Profile">;
+}
+export interface PersonalInformationScreenProps {
+    navigation: StackNavigationProp<any, "PersonalInformation">;
+}
+export interface OdersHistoryScreenProps {
+    navigation: StackNavigationProp<any, "OdersHistory">;
+}
+export interface ChangePasswordScreenProps {
+    navigation: StackNavigationProp<any, "ChangePassword">;
+}
+export interface AddressScreenProps {
+    navigation: StackNavigationProp<any, "Address">;
+}

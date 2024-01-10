@@ -13,6 +13,9 @@ import GameScreen from "../Screens/ProductScreen/GameScreen";
 import CartScreen from "../Screens/CartScreen/CartScreen";
 import PaymentScreen from "../Screens/CartScreen/PaymentScreen";
 import ProfileScreen from "../Screens/ProfileScreen/ProfileScreen";
+import PersonalInformationScreen from "../Screens/ProfileScreen/InformationPersonnel";
+import OrderHistoryScreen from "../Screens/ProfileScreen/OdersHistory";
+import ChangePasswordScreen from "../Screens/ProfileScreen/ChangePassword";
 
 const Stack = createStackNavigator();
 
@@ -33,6 +36,9 @@ const Navigation: React.FC = () => (
       <Stack.Screen name="Cart" component={CartScreen} />
         <Stack.Screen name="Payment" component={PaymentScreen} />
         <Stack.Screen name="Profile" component={ProfileScreen} />
+        <Stack.Screen name="PersonalInformation" component={PersonalInformationScreen} />
+        <Stack.Screen name="OdersHistory" component={OrderHistoryScreen} />
+        <Stack.Screen name="ChangePassword" component={ChangePasswordScreen} />
     </Stack.Navigator>
     <StatusBar style="auto" />
   </NavigationContainer>

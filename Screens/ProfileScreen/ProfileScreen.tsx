@@ -1,54 +1,66 @@
 import React, { useEffect } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import { CartScreenProps } from "../../Navigations/NavigationType";
+import {ProfileScreenProps} from "../../Navigations/NavigationType";
 import commonStyles from "../../Styles/Styles";
+import CustomButton from "../../src/Components/button/CustomBtnComponent";
+import Avatar from "../../src/Components/Profile/Avatar";
+import GoBack from "../../src/Components/Profile/GoBack";
 
-const ProfileScreen: React.FC<CartScreenProps> = ({ navigation }) => {
+const ProfileScreen: React.FC<ProfileScreenProps> = ({ navigation }) => {
     useEffect(() => {
     }, []);
 
+    const handlePersonalInformation = () => {
+        navigation.navigate("PersonalInformation");
+    }
+    const handleOrderHistory = () => {
+        navigation.navigate("OdersHistory");
+    }
+    const handleChangePassword = () => {
+        navigation.navigate("ChangePassword");
+    }
+    const handleLogout = () => {
+        navigation.navigate("Login");
+    }
+
     return (
         <View style={[commonStyles.containerHomePage, { flex: 1, justifyContent: 'space-between' }]}>
+            <GoBack/>
+
             <View style={{ paddingTop: 75, flex: 1 }}>
-                <View style={styles.avatarContainer}>
-                    <View style={styles.avatar} />
-                </View>
+                <Avatar uri='avatar-image-url' />
 
                 <View style={styles.buttonContainer}>
-                    <TouchableOpacity style={styles.button}>
+                    <TouchableOpacity style={styles.button} onPress={handlePersonalInformation}>
                         <Text style={styles.buttonText}>Information Personnels</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.button}>
                         <Text style={styles.buttonText}>Mes Adresses</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.button}>
+                    <TouchableOpacity style={styles.button} onPress={handleOrderHistory}>
                         <Text style={styles.buttonText}>Voir mes Commandes</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.button}>
+                    <TouchableOpacity style={styles.button} onPress={handleChangePassword}>
                         <Text style={styles.buttonText}>Modifier Mot de Passe</Text>
                     </TouchableOpacity>
+                    <TouchableOpacity style={styles.button} onPress={handleLogout}>
+                        <Text style={styles.buttonText}>Déconnexion</Text>
+                    </TouchableOpacity>
+
                 </View>
             </View>
 
-            <TouchableOpacity style={[styles.button, styles.deleteAccountButton]}>
-                <Text style={styles.buttonText}>Suppression de Compte</Text>
-            </TouchableOpacity>
+            <View style={{ alignItems: "center" }}>
+                <CustomButton
+                    onPress={() => navigation.navigate("Home")}
+                    buttonText="Suppression de Compte"
+                />
+            </View>
         </View>
     );
 };
 
 const styles = StyleSheet.create({
-    avatarContainer: {
-        marginBottom: 30,
-        alignItems: 'center',
-    },
-    avatar: {
-        width: 100,
-        height: 100,
-        borderRadius: 10,
-        backgroundColor: '#555',
-        marginBottom: 20,
-    },
     buttonContainer: {
         width: '100%',
         alignItems: 'center',
@@ -61,15 +73,7 @@ const styles = StyleSheet.create({
         marginBottom: 15,
         alignItems: 'center',
     },
-    deleteAccountButton: {
-        backgroundColor: '#2B7EB1',
-        padding: 20,
-        width: '90%',
-        borderRadius: 10,
-        marginBottom: 15,
-        alignItems: 'center',
-        alignSelf: 'center',
-    },
+
     buttonText: {
         color: '#FFF',
         fontSize: 18,
