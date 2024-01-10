@@ -19,7 +19,6 @@ const InputStyles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#D9D9D9",
     height: 40,
-    width: 290,
     marginBottom: 20,
     borderRadius: 8,
   },
