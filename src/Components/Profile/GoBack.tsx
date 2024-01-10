@@ -1,4 +1,3 @@
-// GoBack.js
 import React from 'react';
 import { TouchableOpacity, StyleSheet } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
