@@ -31,7 +31,7 @@ export const CartProvider = ({ children }) => {
             if (existingItemIndex !== -1) {
                 updatedItems[existingItemIndex].quantity += item.quantity;
             } else {
-                const newItem = { ...item, quantity: 1 };
+                const newItem = { ...item, quantity: item.quantity };
                 updatedItems.push(newItem);
             }
 
