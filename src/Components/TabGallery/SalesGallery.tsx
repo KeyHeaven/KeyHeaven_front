@@ -26,7 +26,7 @@ const SalesGallery: React.FC<SalesGalleryProps> = ({ data, onPress }) => {
           style={SalesGallerySstyles.card}
           onPress={() => handleCardPress(item)}>
           <Image
-            source={item.image}
+            source={{ uri: item.image }}
             style={SalesGallerySstyles.image}
             resizeMode="cover"
           />

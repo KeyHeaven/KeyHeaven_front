@@ -26,7 +26,7 @@ const NewTabGallery: React.FC<NewTabGalleryProps> = ({ data, onPress }) => {
           style={NewTabGalleryStyles.card}
           onPress={() => handleCardPress(item)}>
           <Image
-            source={item.image}
+            source={{ uri: item.image }}
             style={NewTabGalleryStyles.image}
             resizeMode="cover"
           />
