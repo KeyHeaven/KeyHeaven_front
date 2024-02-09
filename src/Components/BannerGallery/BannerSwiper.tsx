@@ -32,7 +32,6 @@ const BannerSwiper: React.FC<BannerSwiperProps> = ({ data, onPress }) => {
 
   const handleSlidePress = (item: Product) => {
     onPress(item);
-    console.log("Card pressed:", item);
     // @ts-ignore
     navigation.navigate("Game", { item });
   };

@@ -23,14 +23,12 @@ export const addPurchase = async (products: any) => {
 export const addPurchaseDetails = async (purchaseId: string, products: any) => {
     try {
         const responses = await Promise.all(products.map(async (product) => {
-            console.log('product', product.id)
-            console.log('purchaseId', purchaseId)
             return axiosInstance.post(`/purchase_details`, {
                 quantity: 1,
                 unitPrice: 1,
                 purchase: `api/purchasings/${purchaseId}`,
                 game: `api/games/${product.id}`,
-            },{
+            }, {
                 headers: {
                     'Content-Type': 'application/ld+json'
                 }

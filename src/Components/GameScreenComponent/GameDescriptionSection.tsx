@@ -1,14 +1,14 @@
-import React, {useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text } from "react-native";
 import gameStyles from "../../../Styles/GameStyles";
 import { getDeveloperById } from "../../Controllers/DeveloperController";
 import { getEditorById } from "../../Controllers/EditorController";
 
 interface GameDescriptionSectionProps {
-  item: { developer: string; editor: string; genre: string ; date: string };
+    item: { developer: string; editor: string; genre: string; date: string };
 }
 
-const GameDescriptionSection : React.FC<GameDescriptionSectionProps>= ({ item }) => {
+const GameDescriptionSection: React.FC<GameDescriptionSectionProps> = ({ item }) => {
     const [developer, setDeveloper] = useState({});
     const [editor, setEditor] = useState({});
 
@@ -18,7 +18,6 @@ const GameDescriptionSection : React.FC<GameDescriptionSectionProps>= ({ item })
     }, []);
     const getDeveloper = async () => {
         const dev = await getDeveloperById(item.developer);
-        console.log(dev);
         setDeveloper(dev);
     }
     const getEditor = async () => {

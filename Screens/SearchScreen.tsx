@@ -12,7 +12,6 @@ const SearchGameScreen = () => {
     const handleSearch = async () => {
         try {
             const response = await searchGame(searchTerm);
-            console.log(response);
             setGames(response['hydra:member']);
         } catch (error) {
             console.error(error);

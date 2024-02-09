@@ -6,7 +6,7 @@ import CartItem from "../../src/Components/cart/CartItem";
 import commonStyles from "../../Styles/Styles";
 import TopBar from "../../src/Components/TopBar/TopBar";
 import { useCart } from "../../src/Controllers/CartController";
-import {addPurchase, addPurchaseDetails} from "../../src/Controllers/PurchaseController";
+import { addPurchase, addPurchaseDetails } from "../../src/Controllers/PurchaseController";
 const CartScreen: React.FC<CartScreenProps> = ({ navigation }) => {
     const [items, setItems] = useState([]);
     const { getCartItems, removeFromCart } = useCart();
@@ -40,10 +40,8 @@ const CartScreen: React.FC<CartScreenProps> = ({ navigation }) => {
 
     const handlePayment = async () => {
         const purchase = await addPurchase(items);
-        console.log(purchase);
 
         const purchaseDetails = await addPurchaseDetails(purchase.id, items);
-        console.log(purchaseDetails);
         navigation.navigate("Payment", { purchasingId: purchase.id });
     };
 
