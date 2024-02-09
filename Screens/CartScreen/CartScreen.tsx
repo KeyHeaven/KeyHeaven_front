@@ -6,7 +6,7 @@ import CartItem from "../../src/Components/cart/CartItem";
 import commonStyles from "../../Styles/Styles";
 import TopBar from "../../src/Components/TopBar/TopBar";
 import { useCart } from "../../src/Controllers/CartController";
-
+import {addPurchase, addPurchaseDetails} from "../../src/Controllers/PurchaseController";
 const CartScreen: React.FC<CartScreenProps> = ({ navigation }) => {
     const [items, setItems] = useState([]);
     const { getCartItems, removeFromCart } = useCart();
@@ -36,12 +36,17 @@ const CartScreen: React.FC<CartScreenProps> = ({ navigation }) => {
         const cartItems = await getCartItems();
         setItems(cartItems);
     };
+    const total = items.reduce((sum, item) => sum + item.price * (item.quantity ?? 0), 0);
 
-    const handlePayment = () => {
-        navigation.navigate("Payment");
+    const handlePayment = async () => {
+        const purchase = await addPurchase(items);
+        console.log(purchase);
+
+        const purchaseDetails = await addPurchaseDetails(purchase.id, items);
+        console.log(purchaseDetails);
+        navigation.navigate("Payment", { purchasingId: purchase.id });
     };
 
-    const total = items.reduce((sum, item) => sum + item.price * (item.quantity ?? 0), 0);
 
     return (
         <View style={commonStyles.containerHomePage}>
