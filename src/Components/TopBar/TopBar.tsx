@@ -40,15 +40,12 @@ const TopBar: React.FC = () => {
         />
       </TouchableOpacity>
       <View style={commonStyles.SearchContainer}>
+          <TouchableOpacity onPress={() => navigation.navigate("Search")}>
         <FontAwesomeIcon
           style={{ height: 20, width: 20, margin: 5, color: "#fff" }}
           icon={faSearch}
         />
-        <SearchInput
-          style={commonStyles.searchInput}
-          placeholder="Rechercher"
-          inputFocus={false}
-        />
+            </TouchableOpacity>
       </View>
       <TouchableOpacity onPress={handleCartIconPress}>
         <View>
