@@ -1,15 +1,20 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import gameStyles from '../../../Styles/GameStyles';
 
-const Counter = () => {
-    const [count, setCount] = useState(0);
-
+const Counter = ({onCountChanged }) => {
+    const [count, setCount] = useState(1);
+    useEffect(() => {
+        if(onCountChanged) {
+            onCountChanged(count);
+        }
+    }, [count]);
     const increment = () => {
         setCount(count + 1);
     };
 
     const decrement = () => {
+        if (count === 1) return;
         setCount(count - 1);
     };
 

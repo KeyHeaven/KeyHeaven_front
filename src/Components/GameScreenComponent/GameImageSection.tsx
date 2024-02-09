@@ -11,7 +11,7 @@ const GameImageSection: React.FC<GameImageSectionProps> = ({ item }) => (
   <View style={gameStyles.imageContainer}>
     <Image
       style={gameStyles.gameImage}
-      source={item.image}
+      source={{ uri: item.image }}
     />
     <Text style={[gameStyles.gameName, gameStyles.overlayText]}>
       {item.title}

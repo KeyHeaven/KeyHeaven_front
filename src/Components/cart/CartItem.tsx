@@ -20,7 +20,7 @@ const CartScreen: React.FC<CartItemProps> = ({
 }) => {
   return (
     <View style={commonStyles.cartItem}>
-      <Image source={item.image } style={commonStyles.cartImage} />
+      <Image source={{uri: item.image}} style={commonStyles.cartImage} />
       <View style={{ flex: 1, marginTop: 10 }}>
         <View
           style={{

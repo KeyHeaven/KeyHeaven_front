@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { View, Image, Text, TouchableOpacity } from "react-native";
 import Swiper from "react-native-swiper";
 import BannerStyles from "./BannerSwiperStyle";
-import slides from "../../../Data/Slides";
 import { useNavigation } from "@react-navigation/native";
 import Product from "../../Interfaces/Product";
 
@@ -20,7 +19,7 @@ const BannerSwiper: React.FC<BannerSwiperProps> = ({ data, onPress }) => {
   useEffect(() => {
     const autoSwipe = setInterval(() => {
       if (swiperRef.current) {
-        const nextIndex = (currentIndex + 1) % slides.length;
+        const nextIndex = (currentIndex + 1) % data.length;
         swiperRef.current.scrollBy(1);
         setCurrentIndex(nextIndex);
       }
@@ -33,7 +32,6 @@ const BannerSwiper: React.FC<BannerSwiperProps> = ({ data, onPress }) => {
 
   const handleSlidePress = (item: Product) => {
     onPress(item);
-    console.log("Card pressed:", item);
     // @ts-ignore
     navigation.navigate("Game", { item });
   };
@@ -46,14 +44,14 @@ const BannerSwiper: React.FC<BannerSwiperProps> = ({ data, onPress }) => {
         loop={true}
         onIndexChanged={(index) => setCurrentIndex(index)}
       >
-        {slides.map((slide, index) => (
+        {data.map((slide, index) => (
           <TouchableOpacity
             key={index}
             style={BannerStyles.slide}
             onPress={() => handleSlidePress(slide)}
           >
             <Image
-              source={slide.image}
+              source={{ uri: slide.image }}
               style={BannerStyles.image}
               resizeMode="cover"
             />

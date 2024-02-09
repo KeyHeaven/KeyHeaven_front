@@ -20,10 +20,15 @@ const GameScreen: React.FC<GameScreenProps> = ({ route, navigation }) => {
     item: Product;
   };
   const { addToCart } = useCart();
+  const [quantity, setQuantity] = useState(1);
 
   const handleCart = async () => {
-    await addToCart(item);
+    await addToCart({ ...item, quantity: quantity });
   }
+
+    const handleCountChange = (newCount) => {
+    setQuantity(newCount);
+    };
 
   return (
     <ScrollView style={commonStyles.containerHomePage}>
@@ -56,7 +61,7 @@ const GameScreen: React.FC<GameScreenProps> = ({ route, navigation }) => {
               icon={faShoppingCart}
             />
           </TouchableOpacity>
-          <Counter />
+          <Counter onCountChanged={handleCountChange}/>
           <TouchableOpacity
             style={gameStyles.cardButtonPay}
             onPress={() => handleCart()}>

@@ -4,13 +4,14 @@ import { CardField, confirmPayment } from '@stripe/stripe-react-native';
 import commonStyles from '../../Styles/Styles';
 import TopBar from '../../src/Components/TopBar/TopBar';
 import PaymentSuccessModal from '../../src/Components/cart/PaymentConfirmationModal';
-import { createPaymentIntent } from '../../src/Controllers/PaymentController';
+import { createPaymentIntent, paymentSuccess } from '../../src/Controllers/PaymentController';
 import { useCart } from '../../src/Controllers/CartController';
 import CustomButton from '../../src/Components/button/CustomBtnComponent';
 
 const PaymentScreen = ({ route, navigation }) => {
+    const { purchasingId } = route.params;
     const [cartItems, setCartItems] = useState([]);
-    const { getCartItems,  clearCart } = useCart();
+    const { getCartItems, clearCart } = useCart();
     useEffect(() => {
         loadCartItems();
     }, []);
@@ -18,7 +19,6 @@ const PaymentScreen = ({ route, navigation }) => {
     const loadCartItems = async () => {
         try {
             const storedCartItems = await getCartItems();
-            console.log(storedCartItems);
             if (storedCartItems !== null) {
                 setCartItems(storedCartItems);
             }
@@ -41,14 +41,11 @@ const PaymentScreen = ({ route, navigation }) => {
         setIsLoading(true);
 
         const products = cartItems.map(item => ({
-            productId: item.id,
-            productName: item.name,
-            priceId: item.priceId,
+            id: item.id,
         }));
 
         const response = await createPaymentIntent(products);
-
-        const { clientSecret, error: backendError } = await response.json();
+        const { clientSecret, error: backendError } = await response;
 
         if (backendError) {
             Alert.alert('Paiement refusé', backendError);
@@ -66,6 +63,7 @@ const PaymentScreen = ({ route, navigation }) => {
             setIsLoading(false);
         } else if (paymentIntent) {
             setIsLoading(false);
+            await paymentSuccess(paymentIntent.id, purchasingId);
             setSuccessModalVisible(true);
             clearCart();
         }
@@ -78,7 +76,7 @@ const PaymentScreen = ({ route, navigation }) => {
             <ScrollView>
                 {cartItems.map((item) => (
                     <View key={item.id} style={styles.itemContainer}>
-                        <Text style={styles.itemName}>{item.name}</Text>
+                        <Text style={styles.itemName}>{item.title}</Text>
                         <Text style={styles.itemPrice}>{item.quantity} x <Text style={styles.itemPriceValue}>{item.price}€</Text></Text>
                     </View>
                 ))}
@@ -89,13 +87,13 @@ const PaymentScreen = ({ route, navigation }) => {
                 onCardChange={(card) => setCardDetails(card)}
                 style={styles.cardContainer}
             />
-                {isLoading ? (
-                    <ActivityIndicator size="large" color="#FFFFFF" />
-                ) : (
-                    <View style={{ alignItems: "center" }}>
-                        <CustomButton onPress={() => handlePayment()} buttonText="Valider" />
-                    </View>
-                )}
+            {isLoading ? (
+                <ActivityIndicator size="large" color="#FFFFFF" />
+            ) : (
+                <View style={{ alignItems: "center" }}>
+                    <CustomButton onPress={() => handlePayment()} buttonText="Valider" />
+                </View>
+            )}
             <PaymentSuccessModal
                 visible={successModalVisible}
                 onReturn={() => {
@@ -107,7 +105,7 @@ const PaymentScreen = ({ route, navigation }) => {
                 }}
                 onDetails={() => {
                     setSuccessModalVisible(false);
-                    // TODO : Afficher les détails de la commande
+                    navigation.navigate('PurchaseDetailsScreen', { purchaseId: purchasingId });
                 }}
             />
         </View>

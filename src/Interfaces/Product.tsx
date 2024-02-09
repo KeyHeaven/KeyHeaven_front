@@ -19,6 +19,7 @@ interface Product {
     screen: string;
     promo?: string;
     year?: string;
+    configuration?: string;
 }
 
 export default Product;

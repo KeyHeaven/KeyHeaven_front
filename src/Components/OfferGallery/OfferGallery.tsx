@@ -16,7 +16,6 @@ const OfferSwiper: React.FC<OfferSwiperProps> = ({ data, onPress }) => {
 
   const handleSlidePress = (item: Product) => {
     onPress(item);
-    console.log("Card pressed:", item);
     // @ts-ignore
     navigation.navigate("Game", { item });
   };

@@ -27,7 +27,7 @@ const BestSellsGallery: React.FC<BestSellsGalleryProps> = ({
           style={BestSellsStyles.card}
           onPress={() => handleCardPress(item)}>
           <Image
-            source={item.image}
+            source={{ uri: item.image }}
             style={BestSellsStyles.image}
             resizeMode="cover"
           />
