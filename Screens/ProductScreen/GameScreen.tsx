@@ -13,6 +13,7 @@ import GameDescriptionSection from "../../src/Components/GameScreenComponent/Gam
 import GameRequirementsSection from "../../src/Components/GameScreenComponent/GameRequirementsSection";
 import Product from "../../src/Interfaces/Product";
 import { useCart } from "../../src/Controllers/CartController";
+import GameReviewsSection from "../../src/Components/GameScreenComponent/GameReviewsSection"; // Importez le nouveau composant
 
 const GameScreen: React.FC<GameScreenProps> = ({ route, navigation }) => {
 
@@ -21,7 +22,10 @@ const GameScreen: React.FC<GameScreenProps> = ({ route, navigation }) => {
   };
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
-
+    const reviews = [
+        { username: "Alex", comment: "Super jeu, très amusant!", rating: 4 },
+        { username: "Jordan", comment: "Graphismes incroyables, mais l'histoire est un peu courte.", rating: 3 },
+    ];
   const handleCart = async () => {
     await addToCart({ ...item, quantity: quantity });
   }
@@ -71,6 +75,8 @@ const GameScreen: React.FC<GameScreenProps> = ({ route, navigation }) => {
 
         <GameDescriptionSection item={item} />
         <GameRequirementsSection item={item} />
+          <GameReviewsSection reviews={reviews} />
+
       </View>
     </ScrollView>
   );

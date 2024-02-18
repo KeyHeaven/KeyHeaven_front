@@ -28,7 +28,7 @@ const ProfileScreen: React.FC<ProfileScreenProps> = ({ navigation }) => {
             <GoBack/>
 
             <View style={{ paddingTop: 75, flex: 1 }}>
-                <Avatar uri='avatar-image-url' />
+                <Avatar uri='https://png.pngtree.com/element_our/20200610/ourmid/pngtree-default-avatar-image_2237213.jpg' />
 
                 <View style={styles.buttonContainer}>
                     <TouchableOpacity style={styles.button} onPress={handlePersonalInformation}>
