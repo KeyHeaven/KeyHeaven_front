@@ -18,6 +18,7 @@ import OrderHistoryScreen from "../Screens/ProfileScreen/OdersHistory";
 import ChangePasswordScreen from "../Screens/ProfileScreen/ChangePassword";
 import PurchaseDetailsScreen from "../Screens/Purchase/PurchaseDetail";
 import SearchScreen from "../Screens/SearchScreen";
+import SupportScreen from "../Screens/Support/SupportScreen";
 
 const Stack = createStackNavigator();
 
@@ -43,6 +44,7 @@ const Navigation: React.FC = () => (
         <Stack.Screen name="ChangePassword" component={ChangePasswordScreen} />
         <Stack.Screen name="PurchaseDetailsScreen" component={PurchaseDetailsScreen} />
         <Stack.Screen name="Search" component={SearchScreen} />
+      <Stack.Screen name="SupportScreen" component={SupportScreen} />
     </Stack.Navigator>
     <StatusBar style="auto" />
   </NavigationContainer>
