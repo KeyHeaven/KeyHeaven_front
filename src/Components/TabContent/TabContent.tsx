@@ -5,26 +5,26 @@ import NewTabGallery from "../TabGallery/NewTabGallery";
 import BestSellsGallery from "../TabGallery/BestSellsGallery";
 import SalesGallery from "../TabGallery/SalesGallery";
 import handleCardPress from "../../../logic/handleCardPress";
-import {getGames} from "../../Controllers/GameController";
+import {getGames, getNewGames} from "../../Controllers/GameController";
 interface TabContentProps {
   activeTab: string;
 }
 
 const TabContent: React.FC<TabContentProps> = ({ activeTab }) => {
-  const [slides, setSlides] = useState([]);
   const [bestSellsSlides, setBestSellsSlides] = useState([]);
   const [offerSlides, setOfferSlides] = useState([]);
+  const [newGames, setNewGames] = useState([]);
 
   useEffect(() => {
-    const fetchSlides =async  () => {
-      const data = await getGames();
-      setSlides(data['hydra:member']);
+
+
+    const fetchNewGames = async () => {
+        const data = await getNewGames();
+      setNewGames(data['hydra:member']);
     }
 
     const fetchBestSellsSlides =async () => {
       const data = await getGames();
-      // sort data aleatory
-        data['hydra:member'].sort(() => Math.random() - 0.5);
       setBestSellsSlides(data['hydra:member']);
     }
     const fetchOfferSlides = async() => {
@@ -34,7 +34,7 @@ const TabContent: React.FC<TabContentProps> = ({ activeTab }) => {
     }
 
     if (activeTab === "Tab1") {
-      fetchSlides();
+      fetchNewGames();
     } else if (activeTab === "Tab2") {
       fetchBestSellsSlides();
     } else if (activeTab === "Tab3") {
@@ -46,7 +46,7 @@ const TabContent: React.FC<TabContentProps> = ({ activeTab }) => {
     case "Tab1":
       return (
         <ScrollView style={commonStyles.tabContent}>
-          <NewTabGallery data={slides} onPress={handleCardPress} />
+          <NewTabGallery data={newGames} onPress={handleCardPress} />
         </ScrollView>
       );
     case "Tab2":
