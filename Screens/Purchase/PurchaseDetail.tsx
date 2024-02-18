@@ -7,7 +7,6 @@ import { getGameById } from '../../src/Controllers/GameController';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import ReviewModal from '../../src/Components/Review/ReviewModal';
 import ActivationCodeModal from '../../src/Components/Orders/ActivationCodeModal';
-import SupportModal from '../../src/Components/Support/SupportModal';
 import { useNavigation } from '@react-navigation/native';
 
 const PurchaseDetailsScreen = ({ route }) => {
