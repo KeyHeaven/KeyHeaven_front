@@ -1,57 +1,73 @@
-import React, {useEffect, useState } from 'react';
-import { Modal, View, Text, StyleSheet, TouchableOpacity, TextInput, TouchableWithoutFeedback, ActivityIndicator } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons'; // Assurez-vous d'avoir installé react-native-vector-icons
+import React, { useEffect, useState } from 'react';
+import {
+    Modal,
+    View,
+    Text,
+    StyleSheet,
+    TouchableOpacity,
+    TextInput,
+    TouchableWithoutFeedback,
+    ActivityIndicator
+} from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { getActivationCodeByPurchaseId } from '../../Controllers/ActivationCodeController';
 
 const ActivationCodeModal = ({ visible, onClose, game, purchaseDetails }) => {
     const [secureText, setSecureText] = useState(true);
-    const [activationCode, setActivationCode] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
+    const [activationCode, setActivationCode] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-            getActivationCode();
-    }, []);
+        const fetchActivationCode = async () => {
+            if (visible && purchaseDetails) {
+                setIsLoading(true);
+                try {
+                    const data = await getActivationCodeByPurchaseId(purchaseDetails.id);
+                    setActivationCode(data.code);
+                } catch (error) {
+                    console.error('Erreur lors de la récupération du code d\'activation', error);
+                } finally {
+                    setIsLoading(false);
+                }
+            }
+        };
 
-    const getActivationCode = async () => {
-        setIsLoading(true);
-        const data = await getActivationCodeByPurchaseId(purchaseDetails.id);
-        setActivationCode(data.code);
-        setIsLoading(false);
-    }
-    const handleModalClose = (event) => {
-        if (event.target === event.currentTarget) {
-            onClose();
-        }
-    };
+        fetchActivationCode();
+    }, [visible, purchaseDetails]);
+
     return (
         <Modal visible={visible} animationType="slide" transparent={true}>
             <TouchableOpacity
                 style={styles.centeredView}
-                onPress={handleModalClose}
+                onPress={onClose}
                 activeOpacity={1}
             >
                 <View style={styles.centeredView} onStartShouldSetResponder={() => true}>
-                    {isLoading ? (
-                        <ActivityIndicator size="large" color="#0000ff" />
-                    ) : (
+                    <TouchableWithoutFeedback>
                         <View style={styles.modalView}>
-                            <Text style={styles.modalText}>Clé d'activation pour {game.title}:</Text>
-                            <View style={styles.codeContainer}>
-                                <TextInput
-                                    style={styles.codeInput}
-                                    value={activationCode || 'Chargement...'}
-                                    editable={false}
-                                    secureTextEntry={secureText}
-                                />
-                                <TouchableWithoutFeedback onPress={() => setSecureText(!secureText)}>
-                                    <Icon name={secureText ? "eye-off" : "eye"} size={24} color="#000" />
-                                </TouchableWithoutFeedback>
-                            </View>
-                            <TouchableOpacity style={styles.button} onPress={onClose}>
-                                <Text style={styles.textStyle}>Fermer</Text>
-                            </TouchableOpacity>
+                            {isLoading ? (
+                                <ActivityIndicator size="large" color="#0000ff" />
+                            ) : (
+                                <>
+                                    <Text style={styles.modalText}>Clé d'activation pour {game.title}:</Text>
+                                    <View style={styles.codeContainer}>
+                                        <TextInput
+                                            style={styles.codeInput}
+                                            value={activationCode}
+                                            editable={false}
+                                            secureTextEntry={secureText}
+                                        />
+                                        <TouchableWithoutFeedback onPress={() => setSecureText(!secureText)}>
+                                            <Icon name={secureText ? "eye-off" : "eye"} size={24} color="#000" />
+                                        </TouchableWithoutFeedback>
+                                    </View>
+                                    <TouchableOpacity style={styles.button} onPress={onClose}>
+                                        <Text style={styles.textStyle}>Fermer</Text>
+                                    </TouchableOpacity>
+                                </>
+                            )}
                         </View>
-                    )}
+                    </TouchableWithoutFeedback>
                 </View>
             </TouchableOpacity>
         </Modal>
@@ -84,22 +100,6 @@ const styles = StyleSheet.create({
         marginBottom: 15,
         textAlign: "center"
     },
-    codeText: {
-        marginBottom: 15,
-        fontSize: 16,
-        fontWeight: 'bold',
-    },
-    button: {
-        backgroundColor: "#2196F3",
-        borderRadius: 20,
-        padding: 10,
-        elevation: 2
-    },
-    textStyle: {
-        color: "white",
-        fontWeight: "bold",
-        textAlign: "center"
-    },
     codeContainer: {
         flexDirection: 'row',
         alignItems: 'center',
@@ -112,6 +112,17 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: 'bold',
         padding: 10,
+    },
+    button: {
+        backgroundColor: "#2196F3",
+        borderRadius: 20,
+        padding: 10,
+        elevation: 2
+    },
+    textStyle: {
+        color: "white",
+        fontWeight: "bold",
+        textAlign: "center"
     },
 });
 

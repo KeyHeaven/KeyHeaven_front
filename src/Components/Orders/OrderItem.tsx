@@ -14,7 +14,12 @@ const getStatusStyle = (status) => {
     }
 };
 
-const OrderItem = ({ id, purchaseDate, total, status }) => {
+const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('fr-FR');
+};
+
+const OrderItem = ({ id, purchaseDate, totalAmount, status }) => {
     const navigation = useNavigation();
     const { color, icon, text } = getStatusStyle(status);
 
@@ -25,12 +30,12 @@ const OrderItem = ({ id, purchaseDate, total, status }) => {
     return (
         <TouchableOpacity onPress={handlePress} style={styles.orderItem} activeOpacity={0.7}>
             <View style={styles.orderRow}>
-                <View>
+                <View style={styles.orderDetails}>
                     <Text style={styles.orderText}>Commande #{id}</Text>
-                    <Text style={styles.orderText}>Date: {purchaseDate}</Text>
+                    <Text style={styles.orderDate}>Date: {formatDate(purchaseDate)}</Text>
                 </View>
                 <View style={styles.rightSection}>
-                    <Text style={styles.orderTotal}>{`${total}€`}</Text>
+                    <Text style={styles.orderTotal}>{`${(totalAmount / 100).toFixed(2)}€`}</Text>
                     <View style={[styles.statusIndicator, { backgroundColor: color }]}>
                         <Icon name={icon} size={20} color="#FFFFFF" />
                         <Text style={styles.orderStatus}>{text}</Text>
@@ -43,46 +48,56 @@ const OrderItem = ({ id, purchaseDate, total, status }) => {
 
 const styles = StyleSheet.create({
     orderItem: {
-        padding: 15,
-        marginVertical: 8,
+        padding: 16,
+        marginVertical: 10,
         backgroundColor: '#FFFFFF',
-        borderRadius: 10,
-        elevation: 3,
+        borderRadius: 12,
+        elevation: 4,
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 4,
+        shadowOpacity: 0.15,
+        shadowRadius: 5,
     },
     orderRow: {
         flexDirection: 'row',
         justifyContent: 'space-between',
     },
+    orderDetails: {
+        flex: 1,
+    },
     orderText: {
-        fontSize: 14,
+        fontSize: 16,
         color: '#424242',
+        fontWeight: 'bold',
+    },
+    orderDate: {
+        marginTop: 4,
+        fontSize: 14,
+        color: '#757575',
     },
     rightSection: {
         alignItems: 'flex-end',
+        justifyContent: 'space-between',
     },
     orderTotal: {
-        fontWeight: '600',
-        fontSize: 16,
+        fontWeight: 'bold',
+        fontSize: 18,
         color: '#000',
     },
     statusIndicator: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: 5,
-        paddingHorizontal: 8,
-        paddingVertical: 4,
-        borderRadius: 20,
+        marginTop: 8,
+        paddingHorizontal: 10,
+        paddingVertical: 5,
+        borderRadius: 25,
     },
     orderStatus: {
         marginLeft: 5,
         color: '#FFFFFF',
-        fontWeight: 'bold',
+        fontSize: 14,
     },
+
 });
 
 export default OrderItem;
