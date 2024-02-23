@@ -16,9 +16,13 @@ const GameReviewsSection = ({ reviews }) => {
             <Text style={gameStyles.textTitle}>Commentaires des utilisateurs</Text>
             {reviews.map((review, index) => (
                 <View key={index} style={styles.review}>
-                    <Text style={gameStyles.text}>{review.username}</Text>
-                    <Text style={gameStyles.text}>{review.comment}</Text>
-                    <Text style={gameStyles.text}>Note : {review.rating} / 5</Text>
+                    <Text style={gameStyles.text}>{review.id}</Text>
+                    {review.comment.trim() !== '' ? (
+                        <Text style={gameStyles.text}>{review.comment}</Text>
+                    ) : (
+                        <Text style={styles.defaultComment}>Aucun commentaire</Text>
+                    )}
+                    <Text style={gameStyles.text}>Note : {review.note} / 5</Text>
                 </View>
             ))}
         </View>
@@ -44,6 +48,10 @@ const styles = StyleSheet.create({
     },
     username: {
         fontWeight: 'bold',
+    },
+    defaultComment: {
+        fontStyle: 'italic',
+        color: '#666',
     },
 });
 

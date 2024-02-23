@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { TouchableOpacity, View, Text, Image } from "react-native";
+import React, { useEffect, useState } from "react";
+import { TouchableOpacity, View, Text, Image, ActivityIndicator } from "react-native"; // Importez ActivityIndicator
 import { GameScreenProps } from "../../Navigations/NavigationType";
 import commonStyles from "../../Styles/Styles";
 import gameStyles from "../../Styles/GameStyles";
@@ -15,6 +15,7 @@ import Product from "../../src/Interfaces/Product";
 import { useCart } from "../../src/Controllers/CartController";
 import GameReviewsSection from "../../src/Components/GameScreenComponent/GameReviewsSection";
 import { getReviewsByGameId } from "../../src/Controllers/ReviewController";
+import { getGameById } from "../../src/Controllers/GameController";
 
 const GameScreen: React.FC<GameScreenProps> = ({ route, navigation }) => {
     const { item } = route.params as {
@@ -23,11 +24,28 @@ const GameScreen: React.FC<GameScreenProps> = ({ route, navigation }) => {
     const { addToCart } = useCart();
     const [quantity, setQuantity] = useState(1);
     const [reviews, setReviews] = useState([]);
+    const [game, setGame] = useState(null);
+    const [loading, setLoading] = useState(true); // État pour le chargement
+
+    useEffect(() => {
+        fetchGame();
+        fetchReviews();
+    }, []);
+
+    const fetchGame = async () => {
+        setLoading(true);
+        const game = await getGameById(item.id);
+        setGame(game);
+        setLoading(false);
+    }
 
     const fetchReviews = async () => {
+        setLoading(true);
         const reviews = await getReviewsByGameId(item.id);
-        setReviews(reviews);
+        setReviews(reviews['hydra:member']);
+        setLoading(false);
     }
+
     const handleCart = async () => {
         await addToCart({ ...item, quantity: quantity });
     }
@@ -39,31 +57,35 @@ const GameScreen: React.FC<GameScreenProps> = ({ route, navigation }) => {
     return (
         <ScrollView style={commonStyles.containerHomePage}>
             <TopBar showBackButton={true} />
-            <View style={commonStyles.containerHomeGame}>
-                <GameImageSection item={item} />
-
-                <View style={gameStyles.buttonContainer}>
-                    {item.inStock ? (
-                        <>
-                            <TouchableOpacity style={gameStyles.cardButton}>
-                                <FontAwesomeIcon style={{ height: 25, width: 25, color: "#fff" }} icon={faShoppingCart} />
-                            </TouchableOpacity>
-                            <Counter onCountChanged={handleCountChange}/>
-                            <TouchableOpacity style={gameStyles.cardButtonPay} onPress={() => handleCart()}>
-                                <Text style={gameStyles.textTitle}>Ajouter au panier</Text>
-                            </TouchableOpacity>
-                        </>
-                    ) : (
-                        <TouchableOpacity style={gameStyles.cardButtonNoAvailable} disabled={true}>
-                            <Text style={gameStyles.textDisabled}>Non disponible</Text>
-                        </TouchableOpacity>
-                    )}
+            {loading ? (
+                <View style={[commonStyles.containerHomeGame, commonStyles.loaderContainer]}>
+                    <ActivityIndicator size="large" color="#0000ff" />
                 </View>
-
-                <GameDescriptionSection item={item} />
-                <GameRequirementsSection item={item} />
-                <GameReviewsSection reviews={reviews} />
-            </View>
+            ) : (
+                <View style={commonStyles.containerHomeGame}>
+                    <GameImageSection item={game} />
+                    <View style={gameStyles.buttonContainer}>
+                        {game.inStock ? (
+                            <>
+                                <TouchableOpacity style={gameStyles.cardButton}>
+                                    <FontAwesomeIcon style={{ height: 25, width: 25, color: "#fff" }} icon={faShoppingCart} />
+                                </TouchableOpacity>
+                                <Counter onCountChanged={handleCountChange}/>
+                                <TouchableOpacity style={gameStyles.cardButtonPay} onPress={() => handleCart()}>
+                                    <Text style={gameStyles.textTitle}>Ajouter au panier</Text>
+                                </TouchableOpacity>
+                            </>
+                        ) : (
+                            <TouchableOpacity style={gameStyles.cardButtonNoAvailable} disabled={true}>
+                                <Text style={gameStyles.textDisabled}>Non disponible</Text>
+                            </TouchableOpacity>
+                        )}
+                    </View>
+                    <GameDescriptionSection item={game} />
+                    <GameRequirementsSection item={game} />
+                    <GameReviewsSection reviews={reviews} />
+                </View>
+            )}
         </ScrollView>
     );
 };

@@ -1,48 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { View, Text } from "react-native";
 import gameStyles from "../../../Styles/GameStyles";
-import { getConfigurationById } from "../../Controllers/ConfigurationController";
-
-interface GameRequirementsSectionProps {
-  item: {
-    id: number;
-    os: string;
-    processor: string;
-    memory: string;
-    graphics: string;
-    storage: string;
-    directX: string;
-    additionalNote: string;
-    screen: string;
-    configuration: string;
-  };
-}
-
-const GameRequirementsSection: React.FC<GameRequirementsSectionProps> = ({ item }) => {
-  const [gameRequirements, setGameRequirements] = useState({});
-  useEffect(() => {
-    getGameRequirements();
-  }, []);
-  const getGameRequirements = async () => {
-    const response = await getConfigurationById(item.configuration);
-    setGameRequirements(response);
-  }
+const GameRequirementsSection: React.FC = ({ item }) => {
 
   return (
     <View style={gameStyles.minimumRequirementsContainer}>
       <Text style={gameStyles.textTitle}>Configuration Minimale :</Text>
       <Text style={gameStyles.text}>
-        OS: {gameRequirements.operatingSystem}
+        OS: {item.Configuration.operatingSystem}
       </Text>
       <Text style={gameStyles.text}>
-        Processeur: {gameRequirements.processor}
+        Processeur: {item.Configuration.processor}
       </Text>
-      <Text style={gameStyles.text}>Mémoire: {gameRequirements.ramMemory}</Text>
+      <Text style={gameStyles.text}>Mémoire: {item.Configuration.ramMemory}</Text>
       <Text style={gameStyles.text}>
-        Graphiques: {gameRequirements.graphicsCard}
+        Graphiques: {item.Configuration.graphicsCard}
       </Text>
-      <Text style={gameStyles.text}>DirectX: {gameRequirements.directX}</Text>
-      <Text style={gameStyles.text}>Stockage: {gameRequirements.storage}</Text>
+      <Text style={gameStyles.text}>DirectX: {item.Configuration.directX}</Text>
+      <Text style={gameStyles.text}>Stockage: {item.Configuration.storage}</Text>
     </View>
   )
 };
