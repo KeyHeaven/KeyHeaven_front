@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, Image, ActivityIndicator, StyleSheet } from "react-native";
+import { View, Text, Image, ActivityIndicator, StyleSheet, Alert } from "react-native";
 import commonStyles from "../../Styles/Styles";
 import TextStyle from "../../Styles/TextStyle";
 import CustomButton from "../../src/Components/button/CustomBtnComponent";
@@ -7,12 +7,14 @@ import { faLock, faUser } from "@fortawesome/free-solid-svg-icons";
 import CustomInput from "../../src/Components/input/CustomInput";
 import { login } from "../../src/Controllers/AuthentificationController";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Snackbar from 'react-native-snackbar-component';
 
 const LoginScreen = ({ navigation }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [isLoading, setIsLoading] = useState(false);
-
+    const [snackbarVisible, setSnackbarVisible] = useState(false);
+    const [snackbarText, setSnackbarText] = useState("");
     const handleLogin = async () => {
         setIsLoading(true);
         try {
@@ -20,13 +22,15 @@ const LoginScreen = ({ navigation }) => {
 
             if (result && result.token) {
                 await AsyncStorage.setItem('userToken', result.token);
-                navigation.navigate('Home');
-            } else {
-                alert("Échec de la connexion");
+                await navigation.reset('Home');
             }
         } catch (error) {
-            console.error(error);
-            alert("Une erreur s'est produite lors de la tentative de connexion.");
+            if(error.status === 401){
+                setSnackbarText("Identifiants incorrects. Veuillez vérifier vos identifiants.");
+                setSnackbarVisible(true);
+            } else {
+                Alert.alert("Erreur", "Une erreur est survenue lors de la connexion.");
+            }
         } finally {
             setIsLoading(false);
         }
@@ -60,6 +64,16 @@ const LoginScreen = ({ navigation }) => {
                     buttonText="Se connecter"
                 />
             )}
+            <Snackbar
+                visible={snackbarVisible}
+                textMessage={snackbarText}
+                actionHandler={() => setSnackbarVisible(false)}
+                actionText="OK"
+                backgroundColor="#ff0000" // Couleur de fond rouge
+                accentColor="#fff" // Couleur du texte en blanc
+                messageColor="#fff" // Couleur du texte en blanc
+                onRequestClose={() => setSnackbarVisible(false)}
+            />
         </View>
     );
 };
