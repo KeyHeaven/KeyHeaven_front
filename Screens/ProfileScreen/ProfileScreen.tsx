@@ -25,6 +25,9 @@ const ProfileScreen: React.FC<ProfileScreenProps> = ({ navigation }) => {
         await AsyncStorage.removeItem('userToken');
         navigation.navigate("Login");
     }
+    const handleSupport = () => {
+        navigation.navigate("SupportList");
+    }
 
     return (
         <View style={[commonStyles.containerHomePage, { flex: 1, justifyContent: 'space-between' }]}>
@@ -42,6 +45,9 @@ const ProfileScreen: React.FC<ProfileScreenProps> = ({ navigation }) => {
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.button} onPress={handleOrderHistory}>
                         <Text style={styles.buttonText}>Voir mes Commandes</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.button} onPress={handleSupport}>
+                        <Text style={styles.buttonText}>Support</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.button} onPress={handleChangePassword}>
                         <Text style={styles.buttonText}>Modifier Mot de Passe</Text>
