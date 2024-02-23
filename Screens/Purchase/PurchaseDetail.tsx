@@ -33,7 +33,7 @@ const PurchaseDetailsScreen = ({ route }) => {
                 setPurchaseDetails(tablePurchaseDetails);
                 const gamesPromises = tablePurchaseDetails.map(async (item) => {
                     const gameId = item.game.split('/')[3];
-                    return getGameById(gameId);
+                    return await getGameById(gameId);
                 });
                 const gamesResults = await Promise.all(gamesPromises);
 
@@ -76,7 +76,7 @@ const PurchaseDetailsScreen = ({ route }) => {
 
     return (
         <View style={commonStyles.containerHomePage}>
-            <TopBar />
+            <TopBar showBackButton={true} />
             <ScrollView style={commonStyles.cartContainer}>
                 <Text style={styles.title}>Détails de l'Achat</Text>
                 <View style={styles.purchaseDetails}>
@@ -109,7 +109,7 @@ const PurchaseDetailsScreen = ({ route }) => {
                 ))}
                 <TouchableOpacity
                     style={styles.supportButton}
-                    onPress={() => {navigation.navigate('SupportScreen')}}>
+                    onPress={() => {navigation.navigate('CreateTicket')}}>
                     <Text style={styles.supportButtonText}>Ouvrir un ticket de support</Text>
                 </TouchableOpacity>
             </ScrollView>
@@ -124,18 +124,19 @@ const PurchaseDetailsScreen = ({ route }) => {
                 onClose={() => setActivationCodeModalVisible(false)}
                 game={selectedGame || {}}
             />
-            <SupportModal
-                visible={supportModalVisible}
-                onClose={() => setSupportModalVisible(false)}
-                onSubmit={(data) => {}}
-            />
+
         </View>
     );
 };
-
 const styles = StyleSheet.create({
+    title: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        color: '#FFFFFF',
+        marginBottom: 20,
+    },
     supportButton: {
-        backgroundColor: '#4CAF50', // Choisissez une couleur qui s'intègre bien dans votre design
+        backgroundColor: '#FFC107',
         padding: 15,
         borderRadius: 5,
         alignItems: 'center',
@@ -143,7 +144,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     supportButtonText: {
-        color: 'white',
+        color: '#000',
         fontSize: 16,
         fontWeight: 'bold',
     },
@@ -151,6 +152,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+        backgroundColor: '#121212',
     },
     purchaseDetails: {
         marginBottom: 20,
@@ -158,14 +160,16 @@ const styles = StyleSheet.create({
     detailText: {
         fontSize: 16,
         marginBottom: 5,
+        color: '#E0E0E0',
     },
     sectionTitle: {
         fontSize: 20,
         fontWeight: 'bold',
         marginBottom: 10,
+        color: '#BDBDBD',
     },
     card: {
-        backgroundColor: '#FFFFFF',
+        backgroundColor: '#333',
         borderRadius: 8,
         padding: 10,
         flexDirection: 'row',
@@ -190,10 +194,12 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 18,
         marginBottom: 5,
+        color: '#FFFFFF',
     },
     priceText: {
         fontSize: 16,
         marginBottom: 10,
+        color: '#E0E0E0',
     },
     buttonContainer: {
         flexDirection: 'row',
@@ -211,5 +217,4 @@ const styles = StyleSheet.create({
         marginLeft: 5,
     },
 });
-
 export default PurchaseDetailsScreen;

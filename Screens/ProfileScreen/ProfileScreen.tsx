@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import {ProfileScreenProps} from "../../Navigations/NavigationType";
+import { ProfileScreenProps } from "../../Navigations/NavigationType";
 import commonStyles from "../../Styles/Styles";
 import CustomButton from "../../src/Components/button/CustomBtnComponent";
 import Avatar from "../../src/Components/Profile/Avatar";
 import GoBack from "../../src/Components/Profile/GoBack";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import TopBar from "../../src/Components/TopBar/TopBar";
 
 const ProfileScreen: React.FC<ProfileScreenProps> = ({ navigation }) => {
     useEffect(() => {
@@ -19,13 +21,14 @@ const ProfileScreen: React.FC<ProfileScreenProps> = ({ navigation }) => {
     const handleChangePassword = () => {
         navigation.navigate("ChangePassword");
     }
-    const handleLogout = () => {
+    const handleLogout = async () => {
+        await AsyncStorage.removeItem('userToken');
         navigation.navigate("Login");
     }
 
     return (
         <View style={[commonStyles.containerHomePage, { flex: 1, justifyContent: 'space-between' }]}>
-            <GoBack/>
+            <TopBar showBackButton={true} />
 
             <View style={{ paddingTop: 75, flex: 1 }}>
                 <Avatar uri='https://png.pngtree.com/element_our/20200610/ourmid/pngtree-default-avatar-image_2237213.jpg' />
@@ -81,3 +84,4 @@ const styles = StyleSheet.create({
 });
 
 export default ProfileScreen;
+

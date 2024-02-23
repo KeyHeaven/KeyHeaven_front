@@ -71,7 +71,7 @@ const PaymentScreen = ({ route, navigation }) => {
 
     return (
         <View style={commonStyles.containerHomePage}>
-            <TopBar />
+            <TopBar showBackButton={true} />
             <Text style={styles.header}>Récapitulatif de la Commande</Text>
             <ScrollView>
                 {cartItems.map((item) => (

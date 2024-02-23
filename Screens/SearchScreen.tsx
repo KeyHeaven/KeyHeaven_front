@@ -3,6 +3,7 @@ import { View, TextInput, Button, Text, FlatList, StyleSheet, TouchableOpacity, 
 import commonStyles from '../Styles/Styles';
 import { searchGame } from '../src/Controllers/GameController';
 import { useNavigation } from '@react-navigation/native';
+import TopBar from '../src/Components/TopBar/TopBar';
 
 const SearchGameScreen = () => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -20,6 +21,7 @@ const SearchGameScreen = () => {
 
     return (
         <View style={commonStyles.containerHomePage}>
+            <TopBar showBackButton={true} />
             <View style={styles.container}>
                 <TextInput
                     style={styles.input}

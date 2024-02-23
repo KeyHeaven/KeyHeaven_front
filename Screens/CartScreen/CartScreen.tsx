@@ -48,7 +48,7 @@ const CartScreen: React.FC<CartScreenProps> = ({ navigation }) => {
 
     return (
         <View style={commonStyles.containerHomePage}>
-            <TopBar />
+            <TopBar showBackButton={true} />
 
             <View style={commonStyles.cartContainer}>
                 <View style={commonStyles.cartHeader}>
