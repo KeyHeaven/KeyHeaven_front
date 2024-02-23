@@ -81,6 +81,7 @@ const Navigation = () => {
                         <Stack.Screen name="SupportDetail" component={SupportDetail} />
                         <Stack.Screen name="SupportList" component={SupportList} />
                         <Stack.Screen name="CreateTicket" component={CreateTicketScreen} />
+                        <Stack.Screen name="Login" component={LoginScreen} />
                     </>
                 ) : (
                     <>
@@ -89,6 +90,7 @@ const Navigation = () => {
                         <Stack.Screen name="Auth" component={AuthScreen} />
                         <Stack.Screen name="Login" component={LoginScreen} />
                         <Stack.Screen name="SignUp" component={SignUpScreen} />
+                        <Stack.Screen name="Home" component={HomeScreen} />
                     </>
                 )}
             </Stack.Navigator>
