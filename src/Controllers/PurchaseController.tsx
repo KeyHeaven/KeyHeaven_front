@@ -1,11 +1,14 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import axiosInstance from '../../axiosConfig';
-
+import { jwtDecode } from 'jwt-decode';
 export const addPurchase = async (products: any) => {
     try {
+        const user = await AsyncStorage.getItem('userToken');
+        const token = jwtDecode(user);
         const response = await axiosInstance.post(`/purchasings`, {
             totalAmount: 1500,
             status: 'WAITING_PAYMENT',
-            user: "/api/users/201",
+            user: `/api/users/${token.id}`,
             purchaseDate: new Date().toISOString()
 
         }, {

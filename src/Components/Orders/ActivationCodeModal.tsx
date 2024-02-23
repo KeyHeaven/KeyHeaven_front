@@ -10,7 +10,7 @@ import {
     ActivityIndicator
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { getActivationCodeByPurchaseId } from '../../Controllers/ActivationCodeController';
+import { getActivationById } from '../../Controllers/ActivationCodeController';
 
 const ActivationCodeModal = ({ visible, onClose, game, purchaseDetails }) => {
     const [secureText, setSecureText] = useState(true);
@@ -18,11 +18,13 @@ const ActivationCodeModal = ({ visible, onClose, game, purchaseDetails }) => {
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
+        console.log('ActivationCodeModal visible:', visible);
+        console.log('ActivationCodeModal purchaseDetails:', purchaseDetails);
         const fetchActivationCode = async () => {
             if (visible && purchaseDetails) {
                 setIsLoading(true);
                 try {
-                    const data = await getActivationCodeByPurchaseId(purchaseDetails.id);
+                    const data = await getActivationById(purchaseDetails.activationCode.split('/')[3]);
                     setActivationCode(data.code);
                 } catch (error) {
                     console.error('Erreur lors de la récupération du code d\'activation', error);

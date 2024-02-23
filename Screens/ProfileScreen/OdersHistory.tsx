@@ -6,7 +6,8 @@ import styles from '../../src/Components/Orders/OrderItemStyles';
 import { OdersHistoryScreenProps } from '../../Navigations/NavigationType';
 import { getAllPurchaseByUser } from '../../src/Controllers/PurchaseController';
 import TopBar from '../../src/Components/TopBar/TopBar';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { jwtDecode}  from 'jwt-decode';
 const OrderHistoryScreen: React.FC<OdersHistoryScreenProps> = ({ navigation }) => {
     const [orders, setOrders] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -17,8 +18,10 @@ const OrderHistoryScreen: React.FC<OdersHistoryScreenProps> = ({ navigation }) =
     }, []);
     const fetchOrders = async () => {
         setLoading(true);
+        const user = await AsyncStorage.getItem('userToken');
+        const token = jwtDecode(user);
         try {
-            const response = await getAllPurchaseByUser('201');
+            const response = await getAllPurchaseByUser(token.id);
             console.log(response['hydra:member']);
             setOrders(response['hydra:member']);
         } catch (err) {
@@ -62,3 +65,5 @@ const OrderHistoryScreen: React.FC<OdersHistoryScreenProps> = ({ navigation }) =
 };
 
 export default OrderHistoryScreen;
+
+
