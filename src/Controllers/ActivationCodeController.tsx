@@ -1,6 +1,6 @@
 import axiosInstance from '../../axiosConfig';
 
-export const getActivationCodeByPurchaseId = async (activationCodeId) => {
+export const getActivationById = async (activationCodeId) => {
     try {
         const response = await axiosInstance.get(`/activation_codes/${activationCodeId}`);
         return response.data;
