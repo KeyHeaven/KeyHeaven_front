@@ -17,7 +17,6 @@ export const login = async (email: string, password: string) => {
         });
         return response.data;
     } catch (error) {
-        console.error('Erreur lors de la connexion :', error.message);
         throw error;
     }
 }

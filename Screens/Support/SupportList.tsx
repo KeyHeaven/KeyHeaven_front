@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, FlatList, ActivityIndicator, Button, StyleSheet } from 'react-native';
+import { View, Text, FlatList, ActivityIndicator, TouchableOpacity, StyleSheet } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import commonStyles from '../../Styles/Styles';
-import GoBack from '../../src/Components/Profile/GoBack';
 import { getAllSupportTicketsByUser } from '../../src/Controllers/SupportTicketController';
 import TopBar from '../../src/Components/TopBar/TopBar';
 import TicketItem from '../../src/Components/Support/TicketItem';
@@ -18,7 +17,7 @@ const SupportListScreen = ({ navigation }) => {
             const response = await getAllSupportTicketsByUser('201');
             setTickets(response['hydra:member']);
         } catch (err) {
-            setError('Une erreur est survenue lors du chargement des commandes.');
+            setError('Une erreur est survenue lors du chargement des tickets.');
             console.error(err);
         } finally {
             setLoading(false);
@@ -34,7 +33,7 @@ const SupportListScreen = ({ navigation }) => {
     if (loading) {
         return (
             <View style={commonStyles.containerHomePage}>
-                <ActivityIndicator size="large" />
+                <ActivityIndicator size="large" color="#0000ff" />
             </View>
         );
     }
@@ -42,8 +41,7 @@ const SupportListScreen = ({ navigation }) => {
     if (error) {
         return (
             <View style={commonStyles.containerHomePage}>
-                <GoBack />
-                <Text>{error}</Text>
+                <Text style={styles.errorText}>{error}</Text>
             </View>
         );
     }
@@ -53,15 +51,16 @@ const SupportListScreen = ({ navigation }) => {
             <TopBar showBackButton={true}/>
             <View style={styles.container}>
                 <Text style={styles.header}>Liste des Tickets</Text>
-                <Button
-                    title="+ Nouveau Ticket"
-                    onPress={() => navigation.navigate('CreateTicket')}
-                    color="#1E90FF"
-                />
+                <TouchableOpacity
+                    style={styles.newTicketButton}
+                    onPress={() => navigation.navigate('CreateTicket')}>
+                    <Text style={styles.newTicketButtonText}>+ Nouveau Ticket</Text>
+                </TouchableOpacity>
                 <FlatList
                     data={tickets}
                     renderItem={({ item }) => <TicketItem ticket={item} />}
                     keyExtractor={item => item.id.toString()}
+                    contentContainerStyle={styles.listContentContainer}
                 />
             </View>
         </View>
@@ -71,20 +70,36 @@ const SupportListScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
     container: {
         padding: 10,
+        flex: 1,
     },
     header: {
         fontSize: 22,
+        fontWeight: 'bold',
+        color: '#333',
+        marginBottom: 20,
+        textAlign: 'center',
+    },
+    newTicketButton: {
+        backgroundColor: '#1E90FF',
+        paddingVertical: 10,
+        paddingHorizontal: 15,
+        borderRadius: 20,
+        alignItems: 'center',
         marginBottom: 20,
     },
-    ticketItem: {
-        padding: 20,
-        borderBottomWidth: 1,
-        borderColor: '#ccc',
-        marginBottom: 10,
-    },
-    ticketTitle: {
+    newTicketButtonText: {
+        color: '#fff',
+        fontSize: 16,
         fontWeight: 'bold',
-        marginBottom: 5,
+    },
+    errorText: {
+        color: 'red',
+        fontSize: 16,
+        textAlign: 'center',
+        marginTop: 20,
+    },
+    listContentContainer: {
+        paddingBottom: 10,
     },
 });
 

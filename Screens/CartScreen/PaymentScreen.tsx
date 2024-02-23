@@ -64,8 +64,8 @@ const PaymentScreen = ({ route, navigation }) => {
         } else if (paymentIntent) {
             setIsLoading(false);
             await paymentSuccess(paymentIntent.id, purchasingId);
-            setSuccessModalVisible(true);
             clearCart();
+            setSuccessModalVisible(true);
         }
     };
 
@@ -105,7 +105,7 @@ const PaymentScreen = ({ route, navigation }) => {
                 }}
                 onDetails={() => {
                     setSuccessModalVisible(false);
-                    navigation.navigate('PurchaseDetailsScreen', { purchaseId: purchasingId });
+                    navigation.reset('PurchaseDetailsScreen', { purchaseId: purchasingId });
                 }}
             />
         </View>

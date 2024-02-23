@@ -12,8 +12,8 @@ const MessageItem = ({ message }) => (
 
 const SupportDetail = ({ route, navigation }) => {
     const [ticket, setTicket] = useState(null);
-    const [messages, setMessages] = useState([]); // L’état directive formatif des mentions d'appartenance
-    const [newMessage, setNewMessage] = useState(''); // L’état tracer les messages types.
+    const [messages, setMessages] = useState([]);
+    const [newMessage, setNewMessage] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
 
@@ -24,7 +24,7 @@ const SupportDetail = ({ route, navigation }) => {
                 const ticketId = route.params.ticketId;
                 const ticketData = await getTicketDetail(ticketId);
                 setTicket(ticketData);
-                setMessages(ticketData.messages || []); // Préréglage de l’étape proxi
+                setMessages(ticketData.messages || []);
             } catch (err) {
                 setError('Une erreur est survenue lors du chargement du détail du ticket.');
                 console.error(err);
@@ -39,7 +39,7 @@ const SupportDetail = ({ route, navigation }) => {
     const sendMessage = () => {
         if (newMessage.trim()) {
             setMessages([...messages, newMessage]);
-            setNewMessage(''); // Réinitialisation de la boîte d’entrée après la soumission.
+            setNewMessage('');
         }
     };
 

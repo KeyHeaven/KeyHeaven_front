@@ -4,7 +4,6 @@ import { ProfileScreenProps } from "../../Navigations/NavigationType";
 import commonStyles from "../../Styles/Styles";
 import CustomButton from "../../src/Components/button/CustomBtnComponent";
 import Avatar from "../../src/Components/Profile/Avatar";
-import GoBack from "../../src/Components/Profile/GoBack";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import TopBar from "../../src/Components/TopBar/TopBar";
 

@@ -69,9 +69,9 @@ const LoginScreen = ({ navigation }) => {
                 textMessage={snackbarText}
                 actionHandler={() => setSnackbarVisible(false)}
                 actionText="OK"
-                backgroundColor="#ff0000" // Couleur de fond rouge
-                accentColor="#fff" // Couleur du texte en blanc
-                messageColor="#fff" // Couleur du texte en blanc
+                backgroundColor="#ff0000"
+                accentColor="#fff"
+                messageColor="#fff"
                 onRequestClose={() => setSnackbarVisible(false)}
             />
         </View>

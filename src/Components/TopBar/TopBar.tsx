@@ -14,7 +14,7 @@ import {
 
 } from "@fortawesome/free-solid-svg-icons";
 interface TopBarProps {
-    showBackButton?: boolean; // Optionnel, cela décidera si nous devons montrer le carrefour de cruche ou relire
+    showBackButton?: boolean;
 }
 
 const TopBar: React.FC<TopBarProps> = ({ showBackButton }) => {
