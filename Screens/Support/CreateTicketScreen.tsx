@@ -9,6 +9,8 @@ import {
 import { Picker } from '@react-native-picker/picker';
 import { addSupportTicket } from '../../src/Controllers/SupportTicketController';
 import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { jwtDecode } from 'jwt-decode';
 
 const CreateTicketScreen = () => {
     const [ticketSubject, setTicketSubject] = useState('');
@@ -44,13 +46,15 @@ const CreateTicketScreen = () => {
     };
 
     const handleTicketSubmission = async () => {
+        const user = await AsyncStorage.getItem('userToken');
+        const token = jwtDecode(user);
         setLoading(true);
         if (!ticketSubject || !ticketDescription) {
             Alert.alert("Erreur", "Veuillez remplir au moins le sujet et la description de votre ticket.");
             setLoading(false);
             return;
         }
-        await addSupportTicket('201', ticketSubject, ticketDescription, selectedPurchaseId);
+        await addSupportTicket(token.id, ticketSubject, ticketDescription, selectedPurchaseId);
         Alert.alert("Succès", "Votre ticket a été soumis avec succès.");
         navigation.goBack();
         setTicketSubject('');

@@ -22,7 +22,6 @@ const OrderHistoryScreen: React.FC<OdersHistoryScreenProps> = ({ navigation }) =
         const token = jwtDecode(user);
         try {
             const response = await getAllPurchaseByUser(token.id);
-            console.log(response['hydra:member']);
             setOrders(response['hydra:member']);
         } catch (err) {
             setError('Une erreur est survenue lors du chargement des commandes.');

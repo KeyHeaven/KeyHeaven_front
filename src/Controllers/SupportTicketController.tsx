@@ -2,13 +2,12 @@ import axiosInstance from '../../axiosConfig';
 
 export const addSupportTicket = async (userId: string, subject: string, message: string, purchaseDetailId: string | undefined) => {
     try {
-        console.log(purchaseDetailId);
         const response = await axiosInstance.post('/support_tickets', {
             user: `/api/users/${userId}`,
             subject,
             message,
             status: 'OPEN',
-            purchaseDetail: `/api/purchase_details/${purchaseDetailId}` ?? null
+            purchaseDetail: purchaseDetailId ? `/api/purchase_details/${purchaseDetailId}` : null
         }, {
             headers: {
                 'Content-Type': 'application/ld+json'
