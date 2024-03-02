@@ -28,22 +28,25 @@ const GameScreen: React.FC<GameScreenProps> = ({ route, navigation }) => {
     const [loading, setLoading] = useState(true); // État pour le chargement
 
     useEffect(() => {
-        fetchGame();
-        fetchReviews();
+        fetchData();
     }, []);
 
-    const fetchGame = async () => {
+    const fetchData = async () => {
         setLoading(true);
+
+        await fetchGame();
+        await fetchReviews();
+        setLoading(false);
+
+    }
+    const fetchGame = async () => {
         const game = await getGameById(item.id);
         setGame(game);
-        setLoading(false);
     }
 
     const fetchReviews = async () => {
-        setLoading(true);
         const reviews = await getReviewsByGameId(item.id);
         setReviews(reviews['hydra:member']);
-        setLoading(false);
     }
 
     const handleCart = async () => {
@@ -53,19 +56,21 @@ const GameScreen: React.FC<GameScreenProps> = ({ route, navigation }) => {
     const handleCountChange = (newCount) => {
         setQuantity(newCount);
     };
-
+    if (loading && !game) {
+        return (
+            <View style={[commonStyles.containerHomeGame, commonStyles.loaderContainer]}>
+                <ActivityIndicator size="large" color="#0000ff" />
+            </View>
+        );
+    }
     return (
         <ScrollView style={commonStyles.containerHomePage}>
             <TopBar showBackButton={true} />
-            {loading ? (
-                <View style={[commonStyles.containerHomeGame, commonStyles.loaderContainer]}>
-                    <ActivityIndicator size="large" color="#0000ff" />
-                </View>
-            ) : (
+
                 <View style={commonStyles.containerHomeGame}>
                     <GameImageSection item={game} />
                     <View style={gameStyles.buttonContainer}>
-                        {game.inStock ? (
+                        {game && game?.inStock ? (
                             <>
                                 <TouchableOpacity style={gameStyles.cardButton}>
                                     <FontAwesomeIcon style={{ height: 25, width: 25, color: "#fff" }} icon={faShoppingCart} />
@@ -85,7 +90,6 @@ const GameScreen: React.FC<GameScreenProps> = ({ route, navigation }) => {
                     <GameRequirementsSection item={game} />
                     <GameReviewsSection reviews={reviews} />
                 </View>
-            )}
         </ScrollView>
     );
 };
