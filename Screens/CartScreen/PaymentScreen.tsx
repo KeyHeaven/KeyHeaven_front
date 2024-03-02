@@ -43,7 +43,6 @@ const PaymentScreen = ({ route, navigation }) => {
         const products = cartItems.map(item => ({
             id: item.id,
         }));
-
         const response = await createPaymentIntent(products);
         const { clientSecret, error: backendError } = await response;
 
@@ -105,7 +104,10 @@ const PaymentScreen = ({ route, navigation }) => {
                 }}
                 onDetails={() => {
                     setSuccessModalVisible(false);
-                    navigation.reset('PurchaseDetailsScreen', { purchaseId: purchasingId });
+                    navigation.reset({
+                        index: 0,
+                        routes: [{ name: 'PurchaseDetailsScreen', params: { purchaseId: purchasingId } }],
+                    });
                 }}
             />
         </View>
