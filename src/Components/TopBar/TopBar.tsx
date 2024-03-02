@@ -30,11 +30,17 @@ const TopBar: React.FC<TopBarProps> = ({ showBackButton }) => {
     // @ts-ignore
     navigation.navigate("Cart");
   };
-
+    const handleBackPress = () => {
+        if (navigation.canGoBack()) {
+            navigation.goBack();
+        } else {
+            navigation.navigate("Home");
+        }
+    };
   return (
     <View style={commonStyles.ContainerTopBar}>
         {showBackButton && (
-            <TouchableOpacity onPress={() => navigation.goBack()} style={{ marginRight: 10 }}>
+            <TouchableOpacity onPress={() => handleBackPress()} style={{ marginRight: 10 }}>
                 <FontAwesomeIcon
                     icon={faArrowLeft}
                     style={{ height: 20, width: 20, color: "#fff" }}
