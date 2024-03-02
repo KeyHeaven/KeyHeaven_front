@@ -8,6 +8,7 @@ import TopBar from '../../src/Components/TopBar/TopBar';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getUserById, updateUser } from '../../src/Controllers/userController';
 import { useNavigation } from '@react-navigation/native';
+import { jwtDecode } from 'jwt-decode';
 
 const PersonalInformationScreen: React.FC = ({  }) => {
     const [nom, setNom] = useState('');
@@ -15,13 +16,18 @@ const PersonalInformationScreen: React.FC = ({  }) => {
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
     const [isLoading, setIsLoading] = useState(true);
+    const [userId, setUserId] = useState('');
     const navigation = useNavigation();
     useEffect(() => {
+
         const fetchUserData = async () => {
             try {
-                const token = await AsyncStorage.getItem('userToken');
+                const user = await AsyncStorage.getItem('userToken');
+                const token = jwtDecode(user);
+                setUserId(token.id);
+
                 if (token) {
-                    const response = await getUserById('201');
+                    const response = await getUserById(token.id);
                     if (response) {
                         setNom(response.lastname);
                         setPrenom(response.firstname);
@@ -64,7 +70,7 @@ const PersonalInformationScreen: React.FC = ({  }) => {
 
         setIsLoading(true);
         try {
-            await updateUser('201', { firstname: prenom, lastname: nom, email, phone });
+            await updateUser(userId, { firstname: prenom, lastname: nom, email, phone });
             Alert.alert('Succès', 'Informations sauvegardées avec succès');
             // @ts-ignore
             navigation.navigate("Home");
