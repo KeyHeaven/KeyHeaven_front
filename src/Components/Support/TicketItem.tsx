@@ -14,31 +14,30 @@ const getStatusStyle = (status) => {
     }
 };
 
-const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('fr-FR');
-};
-
-const OrderItem = ({ id, purchaseDate, totalAmount, status }) => {
+const TicketItem = ({ ticket}) => {
+    console.log(ticket);
     const navigation = useNavigation();
-    const { color, icon, text } = getStatusStyle(status);
+    const { color, icon, text } = getStatusStyle(ticket.status);
 
     const handlePress = () => {
-        navigation.navigate('PurchaseDetailsScreen', { purchaseId: id });
+        navigation.navigate("SupportDetail", {
+            ticketId: ticket.id,
+        });
     };
 
     return (
         <TouchableOpacity onPress={handlePress} style={styles.orderItem} activeOpacity={0.7}>
             <View style={styles.orderRow}>
-                <View style={styles.orderDetails}>
-                    <Text style={styles.orderText}>Commande #{id}</Text>
-                    <Text style={styles.orderDate}>Date: {formatDate(purchaseDate)}</Text>
+                <View>
+                    <Text style={styles.orderText}>Ticket #{ticket.id}</Text>
+                    <Text style={styles.orderText}>Date: {ticket.date}</Text>
+                    <Text style={styles.orderTotal}>Commande: {ticket.orderId}</Text>
+
                 </View>
                 <View style={styles.rightSection}>
-                    <Text style={styles.orderTotal}>{`${(totalAmount / 100).toFixed(2)}€`}</Text>
                     <View style={[styles.statusIndicator, { backgroundColor: color }]}>
                         <Icon name={icon} size={20} color="#FFFFFF" />
-                        <Text style={styles.orderStatus}>{text}</Text>
+                        <Text style={styles.orderStatus}>Status: {ticket?.status}</Text>
                     </View>
                 </View>
             </View>
@@ -100,4 +99,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default OrderItem;
+export default TicketItem;

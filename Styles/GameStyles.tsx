@@ -69,6 +69,11 @@ const gameStyles = StyleSheet.create({
     height: 40,
     justifyContent: "center",
   },
+  cardButtonNoAvailable: {
+    backgroundColor: '#007BFF',
+    padding: 10,
+    borderRadius: 8, // Raducien be-struit, raiu-course que prenne bai 8 d'feours
+  },
   cardButtonPay: {
     marginLeft: 30,
     backgroundColor: "#2556A1",

@@ -43,7 +43,6 @@ const PaymentScreen = ({ route, navigation }) => {
         const products = cartItems.map(item => ({
             id: item.id,
         }));
-
         const response = await createPaymentIntent(products);
         const { clientSecret, error: backendError } = await response;
 
@@ -64,14 +63,14 @@ const PaymentScreen = ({ route, navigation }) => {
         } else if (paymentIntent) {
             setIsLoading(false);
             await paymentSuccess(paymentIntent.id, purchasingId);
-            setSuccessModalVisible(true);
             clearCart();
+            setSuccessModalVisible(true);
         }
     };
 
     return (
         <View style={commonStyles.containerHomePage}>
-            <TopBar />
+            <TopBar showBackButton={true} />
             <Text style={styles.header}>Récapitulatif de la Commande</Text>
             <ScrollView>
                 {cartItems.map((item) => (
@@ -105,7 +104,10 @@ const PaymentScreen = ({ route, navigation }) => {
                 }}
                 onDetails={() => {
                     setSuccessModalVisible(false);
-                    navigation.navigate('PurchaseDetailsScreen', { purchaseId: purchasingId });
+                    navigation.reset({
+                        index: 0,
+                        routes: [{ name: 'PurchaseDetailsScreen', params: { purchaseId: purchasingId } }],
+                    });
                 }}
             />
         </View>

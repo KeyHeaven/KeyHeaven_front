@@ -44,11 +44,11 @@ const commonStyles = StyleSheet.create({
     alignItems: "center",
   },
   splashImage1: {
-    zIndex: -1,
+    zIndex: 10,
   },
   splashImage2: {
     top: -250,
-    zIndex: 1,
+    zIndex: 100,
   },
   // start cart
   modalView: {
@@ -93,7 +93,7 @@ const commonStyles = StyleSheet.create({
   cartContainer: {
     flex: 1,
     padding: 25,
-    paddingTop: 10,
+    paddingTop: 25,
   },
   cartHeader: {
     flexDirection: "row",
