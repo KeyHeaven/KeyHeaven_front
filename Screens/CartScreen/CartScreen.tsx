@@ -9,23 +9,23 @@ import { useCart } from "../../src/Controllers/CartController";
 import { addPurchase, addPurchaseDetails } from "../../src/Controllers/PurchaseController";
 const CartScreen: React.FC<CartScreenProps> = ({ navigation }) => {
     const [items, setItems] = useState([]);
-    const { getCartItems, removeFromCart } = useCart();
+    const { getCartItems, removeFromCart, addToCart } = useCart();
 
     const handleQuantityChange = (id, delta) => {
-        setItems((currentItems) =>
-            currentItems.map((item) => {
+        items.map((item) => {
                 if (item.id === id) {
                     const newQuantity = item.quantity + delta;
-                    if (newQuantity <= 0) {
-                        removeFromCart(item);
-                        return null;
+                    if (newQuantity < item.quantity) {
+                        removeFromCart({ ...item, quantity: newQuantity });
+                        loadItemsFromStorage();
                     } else {
-                        return { ...item, quantity: newQuantity };
+                        addToCart({ ...item, quantity: newQuantity });
+                        loadItemsFromStorage();
                     }
                 }
                 return item;
-            }).filter(Boolean)
-        );
+        }).filter(Boolean);
+
     };
 
     useEffect(() => {
