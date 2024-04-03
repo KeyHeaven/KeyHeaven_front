@@ -6,11 +6,13 @@ import CustomButton from "../../src/Components/button/CustomBtnComponent";
 import Avatar from "../../src/Components/Profile/Avatar";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import TopBar from "../../src/Components/TopBar/TopBar";
+import {useCart} from "../../src/Controllers/CartController";
 
 const ProfileScreen: React.FC<ProfileScreenProps> = ({ navigation }) => {
     useEffect(() => {
     }, []);
 
+    const {clearCart } = useCart();
     const handlePersonalInformation = () => {
         navigation.navigate("PersonalInformation");
     }
@@ -22,6 +24,7 @@ const ProfileScreen: React.FC<ProfileScreenProps> = ({ navigation }) => {
     }
     const handleLogout = async () => {
         await AsyncStorage.removeItem('userToken');
+        clearCart();
         navigation.navigate("Login");
     }
     const handleSupport = () => {
