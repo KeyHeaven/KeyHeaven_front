@@ -1,5 +1,4 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import axios from "axios";
 import { jwtDecode } from 'jwt-decode';
 import axiosInstance from '../axiosConfig';
 import { getUserById } from "./userController";
