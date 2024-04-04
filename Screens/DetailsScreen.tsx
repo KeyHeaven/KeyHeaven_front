@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, Button } from "react-native";
 import commonStyles from "../Styles/Styles";
 import { DetailsScreenProps } from "../Navigations/NavigationType";
-import ButtonStyles from "../src/Components/button/ButtonStyles";
+import ButtonStyles from "../Components/button/ButtonStyles";
 
 const DetailsScreen: React.FC<DetailsScreenProps> = ({ navigation }) => (
   <View style={commonStyles.container}>

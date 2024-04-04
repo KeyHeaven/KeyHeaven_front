@@ -5,17 +5,17 @@ import commonStyles from "../../Styles/Styles";
 import gameStyles from "../../Styles/GameStyles";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faArrowLeft, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
-import TopBar from "../../src/Components/TopBar/TopBar";
+import TopBar from "../../Components/TopBar/TopBar";
 import { ScrollView } from "react-native-gesture-handler";
-import GameImageSection from "../../src/Components/GameScreenComponent/GameImageSection";
-import GameDescriptionSection from "../../src/Components/GameScreenComponent/GameDescriptionSection";
-import GameRequirementsSection from "../../src/Components/GameScreenComponent/GameRequirementsSection";
-import Counter from "../../src/Components/button/Counter";
-import Product from "../../src/Interfaces/Product";
-import { useCart } from "../../src/Controllers/CartController";
-import GameReviewsSection from "../../src/Components/GameScreenComponent/GameReviewsSection";
-import { getReviewsByGameId } from "../../src/Controllers/ReviewController";
-import { getGameById } from "../../src/Controllers/GameController";
+import GameImageSection from "../../Components/GameScreenComponent/GameImageSection";
+import GameDescriptionSection from "../../Components/GameScreenComponent/GameDescriptionSection";
+import GameRequirementsSection from "../../Components/GameScreenComponent/GameRequirementsSection";
+import Counter from "../../Components/button/Counter";
+import Product from "../../Interfaces/Product";
+import { useCart } from "../../Controllers/CartController";
+import GameReviewsSection from "../../Components/GameScreenComponent/GameReviewsSection";
+import { getReviewsByGameId } from "../../Controllers/ReviewController";
+import { getGameById } from "../../Controllers/GameController";
 
 const GameScreen: React.FC<GameScreenProps> = ({ route, navigation }) => {
     const { item } = route.params as {
@@ -67,29 +67,29 @@ const GameScreen: React.FC<GameScreenProps> = ({ route, navigation }) => {
         <ScrollView style={commonStyles.containerHomePage}>
             <TopBar showBackButton={true} />
 
-                <View style={commonStyles.containerHomeGame}>
-                    <GameImageSection item={game} />
-                    <View style={gameStyles.buttonContainer}>
-                        {game && game?.inStock ? (
-                            <>
-                                <TouchableOpacity style={gameStyles.cardButton}>
-                                    <FontAwesomeIcon style={{ height: 25, width: 25, color: "#fff" }} icon={faShoppingCart} />
-                                </TouchableOpacity>
-                                <Counter onCountChanged={handleCountChange}/>
-                                <TouchableOpacity style={gameStyles.cardButtonPay} onPress={() => handleCart()}>
-                                    <Text style={gameStyles.textTitle}>Ajouter au panier</Text>
-                                </TouchableOpacity>
-                            </>
-                        ) : (
-                            <TouchableOpacity style={gameStyles.cardButtonNoAvailable} disabled={true}>
-                                <Text style={gameStyles.textDisabled}>Non disponible</Text>
+            <View style={commonStyles.containerHomeGame}>
+                <GameImageSection item={game} />
+                <View style={gameStyles.buttonContainer}>
+                    {game && game?.inStock ? (
+                        <>
+                            <TouchableOpacity style={gameStyles.cardButton}>
+                                <FontAwesomeIcon style={{ height: 25, width: 25, color: "#fff" }} icon={faShoppingCart} />
                             </TouchableOpacity>
-                        )}
-                    </View>
-                    <GameDescriptionSection item={game} />
-                    <GameRequirementsSection item={game} />
-                    <GameReviewsSection reviews={reviews} />
+                            <Counter onCountChanged={handleCountChange} />
+                            <TouchableOpacity style={gameStyles.cardButtonPay} onPress={() => handleCart()}>
+                                <Text style={gameStyles.textTitle}>Ajouter au panier</Text>
+                            </TouchableOpacity>
+                        </>
+                    ) : (
+                        <TouchableOpacity style={gameStyles.cardButtonNoAvailable} disabled={true}>
+                            <Text style={gameStyles.textDisabled}>Non disponible</Text>
+                        </TouchableOpacity>
+                    )}
                 </View>
+                <GameDescriptionSection item={game} />
+                <GameRequirementsSection item={game} />
+                <GameReviewsSection reviews={reviews} />
+            </View>
         </ScrollView>
     );
 };

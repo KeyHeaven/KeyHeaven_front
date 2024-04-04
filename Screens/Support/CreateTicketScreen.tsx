@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, TextInput, Button, ScrollView, StyleSheet, Alert, ActivityIndicator } from 'react-native';
-import TopBar from '../../src/Components/TopBar/TopBar';
+import TopBar from '../../Components/TopBar/TopBar';
 import commonStyles from '../../Styles/Styles';
 import {
     getAllPurchaseByUser,
     getPurchaseDetailsByPurchaseId,
-} from '../../src/Controllers/PurchaseController';
+} from '../../Controllers/PurchaseController';
 import { Picker } from '@react-native-picker/picker';
-import { addSupportTicket } from '../../src/Controllers/SupportTicketController';
+import { addSupportTicket } from '../../Controllers/SupportTicketController';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { jwtDecode } from 'jwt-decode';

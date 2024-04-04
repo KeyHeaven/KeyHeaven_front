@@ -2,17 +2,17 @@ import React, { useEffect } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { ProfileScreenProps } from "../../Navigations/NavigationType";
 import commonStyles from "../../Styles/Styles";
-import CustomButton from "../../src/Components/button/CustomBtnComponent";
-import Avatar from "../../src/Components/Profile/Avatar";
+import CustomButton from "../../Components/button/CustomBtnComponent";
+import Avatar from "../../Components/Profile/Avatar";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import TopBar from "../../src/Components/TopBar/TopBar";
-import {useCart} from "../../src/Controllers/CartController";
+import TopBar from "../../Components/TopBar/TopBar";
+import { useCart } from "../../Controllers/CartController";
 
 const ProfileScreen: React.FC<ProfileScreenProps> = ({ navigation }) => {
     useEffect(() => {
     }, []);
 
-    const {clearCart } = useCart();
+    const { clearCart } = useCart();
     const handlePersonalInformation = () => {
         navigation.navigate("PersonalInformation");
     }

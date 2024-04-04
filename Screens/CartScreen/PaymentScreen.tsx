@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, ScrollView, StyleSheet, Button, Alert, ActivityIndicator } from 'react-native';
 import { CardField, confirmPayment } from '@stripe/stripe-react-native';
 import commonStyles from '../../Styles/Styles';
-import TopBar from '../../src/Components/TopBar/TopBar';
-import PaymentSuccessModal from '../../src/Components/cart/PaymentConfirmationModal';
-import { createPaymentIntent, paymentSuccess } from '../../src/Controllers/PaymentController';
-import { useCart } from '../../src/Controllers/CartController';
-import CustomButton from '../../src/Components/button/CustomBtnComponent';
+import TopBar from '../../Components/TopBar/TopBar';
+import PaymentSuccessModal from '../../Components/cart/PaymentConfirmationModal';
+import { createPaymentIntent, paymentSuccess } from '../../Controllers/PaymentController';
+import { useCart } from '../../Controllers/CartController';
+import CustomButton from '../../Components/button/CustomBtnComponent';
 
 const PaymentScreen = ({ route, navigation }) => {
     const { purchasingId } = route.params;

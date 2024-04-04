@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, Button, StyleSheet, ScrollView, TextInput, KeyboardAvoidingView, Platform } from 'react-native';
-import { getTicketDetail } from '../../src/Controllers/SupportTicketController';
+import { getTicketDetail } from '../../Controllers/SupportTicketController';
 import commonStyles from '../../Styles/Styles';
-import TopBar from '../../src/Components/TopBar/TopBar';
+import TopBar from '../../Components/TopBar/TopBar';
 
 const MessageItem = ({ message }) => (
     <View style={styles.messageContainer}>
@@ -64,7 +64,7 @@ const SupportDetail = ({ route, navigation }) => {
             style={commonStyles.containerHomePage}
             behavior={Platform.OS === "ios" ? "padding" : "height"}
         >
-            <TopBar showBackButton={true}/>
+            <TopBar showBackButton={true} />
             <ScrollView style={styles.container}>
                 {ticket ? (
                     <>

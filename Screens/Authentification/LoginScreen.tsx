@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { View, Text, Image, ActivityIndicator, StyleSheet, Alert } from "react-native";
 import commonStyles from "../../Styles/Styles";
 import TextStyle from "../../Styles/TextStyle";
-import CustomButton from "../../src/Components/button/CustomBtnComponent";
+import CustomButton from "../../Components/button/CustomBtnComponent";
 import { faLock, faUser } from "@fortawesome/free-solid-svg-icons";
-import CustomInput from "../../src/Components/input/CustomInput";
-import { login } from "../../src/Controllers/AuthentificationController";
+import CustomInput from "../../Components/input/CustomInput";
+import { login } from "../../Controllers/AuthentificationController";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Snackbar from 'react-native-snackbar-component';
 
@@ -28,7 +28,7 @@ const LoginScreen = ({ navigation }) => {
                 });
             }
         } catch (error) {
-            if(error.status === 401){
+            if (error.status === 401) {
                 setSnackbarText("Identifiants incorrects. Veuillez vérifier vos identifiants.");
                 setSnackbarVisible(true);
             } else {
