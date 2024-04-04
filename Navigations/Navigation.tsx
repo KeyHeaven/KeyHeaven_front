@@ -3,11 +3,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { View, ActivityIndicator } from 'react-native';
-import {jwtDecode} from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 
 // Importez tous vos écrans ici
 import HomeScreen from '../Screens/HomeScreen';
-import DetailsScreen from '../Screens/DetailsScreen';
 import SplashScreen from '../Screens/SplashAnimation/SplashScreen';
 import StartScreen from '../Screens/SplashAnimation/StartScreen';
 import AuthScreen from '../Screens/Authentification/AuthScreen';
@@ -68,7 +67,6 @@ const Navigation = () => {
                 {userToken ? (
                     <>
                         <Stack.Screen name="Home" component={HomeScreen} />
-                        <Stack.Screen name="Details" component={DetailsScreen} />
                         <Stack.Screen name="Game" component={GameScreen} />
                         <Stack.Screen name="Cart" component={CartScreen} />
                         <Stack.Screen name="Payment" component={PaymentScreen} />

@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, ActivityIndicator, TouchableOpacity, StyleSheet } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import commonStyles from '../../Styles/Styles';
-import { getAllSupportTicketsByUser } from '../../src/Controllers/SupportTicketController';
-import TopBar from '../../src/Components/TopBar/TopBar';
-import TicketItem from '../../src/Components/Support/TicketItem';
+import { getAllSupportTicketsByUser } from '../../Controllers/SupportTicketController';
+import TopBar from '../../Components/TopBar/TopBar';
+import TicketItem from '../../Components/Support/TicketItem';
 
 const SupportListScreen = ({ navigation }) => {
     const [tickets, setTickets] = useState([]);
@@ -48,7 +48,7 @@ const SupportListScreen = ({ navigation }) => {
 
     return (
         <View style={commonStyles.containerHomePage}>
-            <TopBar showBackButton={true}/>
+            <TopBar showBackButton={true} />
             <View style={styles.container}>
                 <Text style={styles.header}>Liste des Tickets</Text>
                 <TouchableOpacity

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, ActivityIndicator, Image, TouchableOpacity } from 'react-native';
 import commonStyles from '../../Styles/Styles';
-import { getPurchaseById, getPurchaseDetailsByPurchaseId } from '../../src/Controllers/PurchaseController';
-import TopBar from '../../src/Components/TopBar/TopBar';
-import { getGameById } from '../../src/Controllers/GameController';
+import { getPurchaseById, getPurchaseDetailsByPurchaseId } from '../../Controllers/PurchaseController';
+import TopBar from '../../Components/TopBar/TopBar';
+import { getGameById } from '../../Controllers/GameController';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import ReviewModal from '../../src/Components/Review/ReviewModal';
-import ActivationCodeModal from '../../src/Components/Orders/ActivationCodeModal';
+import ReviewModal from '../../Components/Review/ReviewModal';
+import ActivationCodeModal from '../../Components/Orders/ActivationCodeModal';
 import { useNavigation } from '@react-navigation/native';
 
 const PurchaseDetailsScreen = ({ route }) => {
@@ -109,7 +109,7 @@ const PurchaseDetailsScreen = ({ route }) => {
                 ))}
                 <TouchableOpacity
                     style={styles.supportButton}
-                    onPress={() => {navigation.navigate('CreateTicket')}}>
+                    onPress={() => { navigation.navigate('CreateTicket') }}>
                     <Text style={styles.supportButtonText}>Ouvrir un ticket de support</Text>
                 </TouchableOpacity>
             </ScrollView>

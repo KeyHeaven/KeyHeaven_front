@@ -1,15 +1,13 @@
-import React, {useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View, ScrollView } from "react-native";
 import commonStyles from "../Styles/Styles";
 import { HomeScreenProps } from "../Navigations/NavigationType";
-import TopBar from "../src/Components/TopBar/TopBar";
-import BannerSwiper from "../src/Components/BannerGallery/BannerSwiper";
-import TabButton from "../src/Components/button/TabBtn";
-import TabContent from "../src/Components/TabContent/TabContent";
-import OfferSwiper from "../src/Components/OfferGallery/OfferGallery";
-import OfferSlides from "../Data/OfferSlides";
-import handleCardPress from "../logic/handleCardPress";
-import {getGames} from "../src/Controllers/GameController";
+import TopBar from "../Components/TopBar/TopBar";
+import BannerSwiper from "../Components/BannerGallery/BannerSwiper";
+import TabButton from "../Components/button/TabBtn";
+import TabContent from "../Components/TabContent/TabContent";
+import OfferSwiper from "../Components/OfferGallery/OfferGallery";
+import { getGames } from "../Controllers/GameController";
 const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   const [activeTab, setActiveTab] = useState("Tab1");
   const [slides, setSlides] = useState([]);
@@ -24,7 +22,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   return (
     <ScrollView style={commonStyles.containerHomePage}>
       <TopBar />
-      <BannerSwiper data={slides} onPress={handleCardPress}/>
+      <BannerSwiper data={slides} />
       <View style={commonStyles.row}>
         <TabButton
           title="Nouveautés"
@@ -43,7 +41,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
         />
       </View>
       <TabContent activeTab={activeTab} />
-      <OfferSwiper data={OfferSlides} onPress={handleCardPress} />
+      <OfferSwiper data={slides} />
     </ScrollView>
   );
 };

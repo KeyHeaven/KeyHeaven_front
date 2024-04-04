@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Alert, ActivityIndicator } from 'react-native';
 import commonStyles from '../../Styles/Styles';
-import CustomInput from '../../src/Components/input/CustomInput';
-import CustomButton from '../../src/Components/button/CustomBtnComponent';
-import Avatar from '../../src/Components/Profile/Avatar';
-import TopBar from '../../src/Components/TopBar/TopBar';
+import CustomInput from '../../Components/input/CustomInput';
+import CustomButton from '../../Components/button/CustomBtnComponent';
+import Avatar from '../../Components/Profile/Avatar';
+import TopBar from '../../Components/TopBar/TopBar';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { getUserById, updateUser } from '../../src/Controllers/userController';
+import { getUserById, updateUser } from '../../Controllers/userController';
 import { useNavigation } from '@react-navigation/native';
 import { jwtDecode } from 'jwt-decode';
 
-const PersonalInformationScreen: React.FC = ({  }) => {
+const PersonalInformationScreen: React.FC = ({ }) => {
     const [nom, setNom] = useState('');
     const [prenom, setPrenom] = useState('');
     const [email, setEmail] = useState('');

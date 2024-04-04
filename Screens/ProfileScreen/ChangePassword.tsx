@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native';
 import commonStyles from '../../Styles/Styles';
-import CustomButton from '../../src/Components/button/CustomBtnComponent';
-import CustomInput from '../../src/Components/input/CustomInput';
+import CustomButton from '../../Components/button/CustomBtnComponent';
+import CustomInput from '../../Components/input/CustomInput';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
 import { ChangePasswordScreenProps } from '../../Navigations/NavigationType';
-import TopBar from '../../src/Components/TopBar/TopBar';
-import { updatePassword } from '../../src/Controllers/AuthentificationController';
+import TopBar from '../../Components/TopBar/TopBar';
+import { updatePassword } from '../../Controllers/AuthentificationController';
 
-const ChangePasswordScreen: React.FC<ChangePasswordScreenProps> = ({navigation}) => {
+const ChangePasswordScreen: React.FC<ChangePasswordScreenProps> = ({ navigation }) => {
     const [currentPassword, setCurrentPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [confirmNewPassword, setConfirmNewPassword] = useState('');
@@ -25,7 +25,7 @@ const ChangePasswordScreen: React.FC<ChangePasswordScreenProps> = ({navigation})
         }
 
         try {
-            const response = await updatePassword('user2@example.com',currentPassword,newPassword);
+            const response = await updatePassword('user2@example.com', currentPassword, newPassword);
 
             if (response.ok) {
                 Alert.alert('Succès', 'Le mot de passe a été changé avec succès.');
@@ -43,12 +43,12 @@ const ChangePasswordScreen: React.FC<ChangePasswordScreenProps> = ({navigation})
         <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
             <View style={commonStyles.containerHomePage}>
                 <TopBar showBackButton={true} />
-                <View style={{paddingTop: 50, flex: 1}} >
+                <View style={{ paddingTop: 50, flex: 1 }} >
                     <Text style={styles.header}>Modifier mon mot de passe</Text>
 
                     <CustomInput icon={faLock} placeholder="Mot de passe actuel" isPassword={true} onValueChange={setCurrentPassword} />
-                    <CustomInput icon={faLock} placeholder="Nouveau mot de passe" isPassword={true} onValueChange={setNewPassword}/>
-                    <CustomInput icon={faLock} placeholder="Confirmer le nouveau mot de passe" isPassword={true} onValueChange={setConfirmNewPassword}/>
+                    <CustomInput icon={faLock} placeholder="Nouveau mot de passe" isPassword={true} onValueChange={setNewPassword} />
+                    <CustomInput icon={faLock} placeholder="Confirmer le nouveau mot de passe" isPassword={true} onValueChange={setConfirmNewPassword} />
                 </View>
                 <View style={{ alignItems: "center" }}>
                     <CustomButton
