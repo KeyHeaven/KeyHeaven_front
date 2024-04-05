@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { View, TextInput, TouchableOpacity, Text, FlatList, StyleSheet, Image } from 'react-native';
 import commonStyles from '../Styles/Styles';
-import { searchGame } from '../src/Controllers/GameController';
+import { searchGame } from '../Controllers/GameController';
 import { useNavigation } from '@react-navigation/native';
-import TopBar from '../src/Components/TopBar/TopBar';
+import TopBar from '../Components/TopBar/TopBar';
 
 const SearchGameScreen = () => {
     const [searchTerm, setSearchTerm] = useState('');

@@ -1,31 +1,31 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, ScrollView, StyleSheet } from "react-native";
 import { CartScreenProps } from "../../Navigations/NavigationType";
-import CustomButton from "../../src/Components/button/CustomBtnComponent";
-import CartItem from "../../src/Components/cart/CartItem";
+import CustomButton from "../../Components/button/CustomBtnComponent";
+import CartItem from "../../Components/cart/CartItem";
 import commonStyles from "../../Styles/Styles";
-import TopBar from "../../src/Components/TopBar/TopBar";
-import { useCart } from "../../src/Controllers/CartController";
-import { addPurchase, addPurchaseDetails } from "../../src/Controllers/PurchaseController";
+import TopBar from "../../Components/TopBar/TopBar";
+import { useCart } from "../../Controllers/CartController";
+import { addPurchase, addPurchaseDetails } from "../../Controllers/PurchaseController";
 const CartScreen: React.FC<CartScreenProps> = ({ navigation }) => {
     const [items, setItems] = useState([]);
-    const { getCartItems, removeFromCart } = useCart();
+    const { getCartItems, removeFromCart, addToCart } = useCart();
 
     const handleQuantityChange = (id, delta) => {
-        setItems((currentItems) =>
-            currentItems.map((item) => {
-                if (item.id === id) {
-                    const newQuantity = item.quantity + delta;
-                    if (newQuantity <= 0) {
-                        removeFromCart(item);
-                        return null;
-                    } else {
-                        return { ...item, quantity: newQuantity };
-                    }
+        items.map((item) => {
+            if (item.id === id) {
+                const newQuantity = item.quantity + delta;
+                if (newQuantity < item.quantity) {
+                    removeFromCart({ ...item, quantity: newQuantity });
+                    loadItemsFromStorage();
+                } else {
+                    addToCart({ ...item, quantity: newQuantity });
+                    loadItemsFromStorage();
                 }
-                return item;
-            }).filter(Boolean)
-        );
+            }
+            return item;
+        }).filter(Boolean);
+
     };
 
     useEffect(() => {

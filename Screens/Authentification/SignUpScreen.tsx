@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { View, Text, Image, ActivityIndicator, StyleSheet } from "react-native";
 import commonStyles from "../../Styles/Styles";
 import TextStyle from "../../Styles/TextStyle";
-import CustomButton from "../../src/Components/button/CustomBtnComponent";
+import CustomButton from "../../Components/button/CustomBtnComponent";
 import { faLock, faUser } from "@fortawesome/free-solid-svg-icons";
-import CustomInput from "../../src/Components/input/CustomInput";
+import CustomInput from "../../Components/input/CustomInput";
 import Toast from 'react-native-toast-message';
-import { register } from "../../src/Controllers/AuthentificationController";
+import { register } from "../../Controllers/AuthentificationController";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const SignUpScreen = ({ navigation }) => {
