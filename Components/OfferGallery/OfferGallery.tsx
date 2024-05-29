@@ -26,7 +26,7 @@ const OfferSwiper: React.FC<OfferSwiperProps> = ({ data }) => {
             style={BannerStyles.slide}
             onPress={() => handleSlidePress(slide)}>
             <Image
-              source={slide.image}
+                source={{ uri: slide.image }}
               style={BannerStyles.image}
               resizeMode="cover"
             />
